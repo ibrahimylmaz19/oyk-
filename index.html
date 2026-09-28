@@ -16,13 +16,14 @@
 
 :root{
     --bg:#fff8f7;
-    --card:rgba(255,255,255,.88);
+    --card:rgba(255,255,255,.90);
     --text:#302b2d;
     --muted:#8c7d82;
     --pink:#d9899c;
     --pink-dark:#b9687d;
     --pink-soft:#f8dfe5;
     --border:#f0dfe3;
+    --green:#25D366;
     --shadow:0 20px 60px rgba(120,70,85,.10);
 }
 
@@ -119,17 +120,14 @@ button,input,textarea{
     }
 }
 
-.home-card,
-.question-card,
-.complete-card{
+/* ANA SAYFA */
+
+.home-card{
     background:var(--card);
     border:1px solid var(--border);
     box-shadow:var(--shadow);
     backdrop-filter:blur(14px);
     border-radius:28px;
-}
-
-.home-card{
     padding:50px 32px;
     text-align:center;
 }
@@ -179,6 +177,8 @@ h1{
     line-height:1.6;
 }
 
+/* BUTONLAR */
+
 .primary-btn{
     width:100%;
     border:none;
@@ -215,6 +215,24 @@ h1{
     background:#fff7f8;
 }
 
+.whatsapp-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    color:white;
+    background:var(--green);
+    padding:17px 20px;
+    border-radius:15px;
+    font-weight:700;
+    font-size:14px;
+    transition:.25s;
+    box-shadow:0 10px 25px rgba(37,211,102,.18);
+}
+
+.whatsapp-btn:hover{
+    transform:translateY(-2px);
+}
+
 .button-row{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -222,7 +240,13 @@ h1{
     margin-top:25px;
 }
 
+/* SORU */
+
 .question-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    border-radius:24px;
     padding:30px;
 }
 
@@ -247,7 +271,7 @@ h1{
 }
 
 .field{
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
 .field label{
@@ -276,10 +300,12 @@ textarea:focus{
 }
 
 textarea{
-    min-height:110px;
+    min-height:105px;
     resize:vertical;
     line-height:1.6;
 }
+
+/* SEÇENEKLER */
 
 .choices{
     display:grid;
@@ -290,7 +316,7 @@ textarea{
     border:1px solid var(--border);
     background:white;
     border-radius:15px;
-    padding:16px;
+    padding:15px;
     cursor:pointer;
     display:flex;
     align-items:center;
@@ -310,8 +336,8 @@ textarea{
 }
 
 .choice-icon{
-    width:38px;
-    height:38px;
+    width:39px;
+    height:39px;
     border-radius:11px;
     display:flex;
     align-items:center;
@@ -332,8 +358,14 @@ textarea{
     color:var(--muted);
 }
 
+/* SON */
+
 .complete-card{
     text-align:center;
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    border-radius:28px;
     padding:48px 30px;
 }
 
@@ -370,24 +402,6 @@ textarea{
     font-size:14px;
 }
 
-.whatsapp-btn{
-    width:100%;
-    border:none;
-    cursor:pointer;
-    color:white;
-    background:#25D366;
-    padding:17px 20px;
-    border-radius:15px;
-    font-weight:700;
-    font-size:14px;
-    transition:.25s;
-    box-shadow:0 10px 25px rgba(37,211,102,.18);
-}
-
-.whatsapp-btn:hover{
-    transform:translateY(-2px);
-}
-
 .footer{
     text-align:center;
     margin-top:20px;
@@ -396,6 +410,7 @@ textarea{
 }
 
 @media(max-width:600px){
+
     .app{
         padding:18px 12px 35px;
     }
@@ -415,6 +430,7 @@ textarea{
     .button-row{
         grid-template-columns:1fr;
     }
+
 }
 </style>
 </head>
@@ -425,18 +441,20 @@ textarea{
 
     <div class="topbar">
         <div class="brand">ÖYKÜ DOSYASI</div>
-        <div class="version">v1.1</div>
+        <div class="version">v2.0</div>
     </div>
 
     <div class="progress-wrap" id="progressWrap">
+
         <div class="progress-info">
-            <span id="progressText">1 / 5</span>
-            <span id="progressPercent">%20</span>
+            <span id="progressText">1 / 7</span>
+            <span id="progressPercent">%14</span>
         </div>
 
         <div class="progress">
             <div class="progress-bar" id="progressBar"></div>
         </div>
+
     </div>
 
 
@@ -448,19 +466,27 @@ textarea{
 
             <div class="icon">🌷</div>
 
-            <div class="eyebrow">KİŞİSEL DOSYA</div>
+            <div class="eyebrow">
+                KİŞİSEL DOSYA
+            </div>
 
-            <h1>Biraz seni tanıyalım.</h1>
+            <h1>
+                Biraz seni tanıyalım.
+            </h1>
 
             <p class="home-description">
+
                 Bu küçük dosyanın amacı seni çözmek değil.
                 Seni, kendi anlattığın şekilde biraz daha tanımak.
+
             </p>
 
             <div class="notice">
+
                 Doğru veya yanlış cevap yok.
                 <br>
                 İçinden geldiği gibi cevapla.
+
             </div>
 
             <button class="primary-btn" onclick="startApp()">
@@ -478,7 +504,9 @@ textarea{
 
         <div class="question-card">
 
-            <div class="question-number">01 / 05</div>
+            <div class="question-number">
+                01 / 07
+            </div>
 
             <div class="question-title">
                 Önce seni biraz tanıyalım.
@@ -489,31 +517,61 @@ textarea{
             </div>
 
             <div class="field">
-                <label>Sana nasıl hitap edilmesini seversin?</label>
-                <input id="hitap" type="text"
-                    placeholder="Örneğin: Öykü, Öykücüm, ismimle...">
+
+                <label>
+                    Sana nasıl hitap edilmesini seversin?
+                </label>
+
+                <input
+                    id="hitap"
+                    type="text"
+                    placeholder="Örneğin: Öykü, Öykücüm, ismimle..."
+                >
+
             </div>
 
             <div class="field">
-                <label>Seni en iyi anlatan 3 kelime?</label>
-                <input id="kelimeler" type="text"
-                    placeholder="Örneğin: sakin, eğlenceli, meraklı">
+
+                <label>
+                    Seni en iyi anlatan 3 kelime?
+                </label>
+
+                <input
+                    id="kelimeler"
+                    type="text"
+                    placeholder="Örneğin: sakin, eğlenceli, meraklı"
+                >
+
             </div>
 
             <div class="field">
-                <label>Şu sıralar seni en çok anlatan şarkı?</label>
-                <input id="sarki" type="text"
-                    placeholder="Şarkı adı / sanatçı">
+
+                <label>
+                    Şu sıralar seni en çok anlatan şarkı?
+                </label>
+
+                <input
+                    id="sarki"
+                    type="text"
+                    placeholder="Şarkı adı / sanatçı"
+                >
+
             </div>
 
             <div class="button-row">
-                <button class="secondary-btn" onclick="goHome()">
+
+                <button
+                    class="secondary-btn"
+                    onclick="goHome()">
                     Geri
                 </button>
 
-                <button class="primary-btn" onclick="nextPage(2)">
+                <button
+                    class="primary-btn"
+                    onclick="nextPage(2)">
                     Devam Et
                 </button>
+
             </div>
 
         </div>
@@ -527,7 +585,9 @@ textarea{
 
         <div class="question-card">
 
-            <div class="question-number">02 / 05</div>
+            <div class="question-number">
+                02 / 07
+            </div>
 
             <div class="question-title">
                 Küçük tercihler.
@@ -537,118 +597,198 @@ textarea{
                 Çok düşünme. İlk hangisi içinden geliyorsa onu seç.
             </div>
 
+
             <div class="field">
-                <label>☕ İçecek?</label>
+
+                <label>
+                    ☕ İçecek?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="icecek"
-                         onclick="selectChoice(this,'icecek','Kahve')">
+                    <div
+                        class="choice"
+                        data-group="icecek"
+                        onclick="selectChoice(this,'icecek','Kahve')">
 
-                        <div class="choice-icon">☕</div>
+                        <div class="choice-icon">
+                            ☕
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Kahve</strong>
-                            <span>Bir kahvenin bahanesi çoktur.</span>
+
+                            <strong>
+                                Kahve
+                            </strong>
+
+                            <span>
+                                Bir kahvenin bahanesi çoktur.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="icecek"
-                         onclick="selectChoice(this,'icecek','Çay')">
 
-                        <div class="choice-icon">🍵</div>
+                    <div
+                        class="choice"
+                        data-group="icecek"
+                        onclick="selectChoice(this,'icecek','Çay')">
+
+                        <div class="choice-icon">
+                            🍵
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Çay</strong>
-                            <span>Sohbetin yanında iyi gider.</span>
+
+                            <strong>
+                                Çay
+                            </strong>
+
+                            <span>
+                                Sohbetin yanında iyi gider.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="field">
-                <label>🌿 Boş bir akşam?</label>
+
+                <label>
+                    🌿 Boş bir akşam?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="aktivite"
-                         onclick="selectChoice(this,'aktivite','Yürüyüş')">
+                    <div
+                        class="choice"
+                        data-group="aktivite"
+                        onclick="selectChoice(this,'aktivite','Yürüyüş')">
 
-                        <div class="choice-icon">🚶‍♀️</div>
+                        <div class="choice-icon">
+                            🚶‍♀️
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Yürüyüş</strong>
-                            <span>Biraz hava, biraz sohbet.</span>
+
+                            <strong>
+                                Yürüyüş
+                            </strong>
+
+                            <span>
+                                Biraz hava, biraz sohbet.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="aktivite"
-                         onclick="selectChoice(this,'aktivite','Uzun sohbet')">
 
-                        <div class="choice-icon">💬</div>
+                    <div
+                        class="choice"
+                        data-group="aktivite"
+                        onclick="selectChoice(this,'aktivite','Uzun sohbet')">
+
+                        <div class="choice-icon">
+                            💬
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Uzun sohbet</strong>
-                            <span>Saatin nasıl geçtiğini anlamamak.</span>
+
+                            <strong>
+                                Uzun sohbet
+                            </strong>
+
+                            <span>
+                                Saatin nasıl geçtiğini anlamamak.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="field">
-                <label>🌙 Hangi saatler?</label>
+
+                <label>
+                    🌙 Hangi saatler?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="zaman"
-                         onclick="selectChoice(this,'zaman','Gece')">
+                    <div
+                        class="choice"
+                        data-group="zaman"
+                        onclick="selectChoice(this,'zaman','Gece')">
 
-                        <div class="choice-icon">🌙</div>
+                        <div class="choice-icon">
+                            🌙
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Gece</strong>
-                            <span>Gece sohbetlerinin ayrı bir havası var.</span>
+
+                            <strong>
+                                Gece
+                            </strong>
+
+                            <span>
+                                Gece sohbetlerinin ayrı bir havası var.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="zaman"
-                         onclick="selectChoice(this,'zaman','Gündüz')">
 
-                        <div class="choice-icon">☀️</div>
+                    <div
+                        class="choice"
+                        data-group="zaman"
+                        onclick="selectChoice(this,'zaman','Gündüz')">
+
+                        <div class="choice-icon">
+                            ☀️
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Gündüz</strong>
-                            <span>Günün enerjisini seviyorum.</span>
+
+                            <strong>
+                                Gündüz
+                            </strong>
+
+                            <span>
+                                Günün enerjisini seviyorum.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="button-row">
 
-                <button class="secondary-btn" onclick="showPage(1)">
+                <button
+                    class="secondary-btn"
+                    onclick="showPage(1)">
                     Geri
                 </button>
 
-                <button class="primary-btn" onclick="nextPage(3)">
+                <button
+                    class="primary-btn"
+                    onclick="nextPage(3)">
                     Devam Et
                 </button>
 
@@ -665,7 +805,9 @@ textarea{
 
         <div class="question-card">
 
-            <div class="question-number">03 / 05</div>
+            <div class="question-number">
+                03 / 07
+            </div>
 
             <div class="question-title">
                 Biraz daha detay.
@@ -677,117 +819,196 @@ textarea{
 
 
             <div class="field">
-                <label>🌊 Hangisi?</label>
+
+                <label>
+                    🌊 Hangisi?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="mekan"
-                         onclick="selectChoice(this,'mekan','Deniz')">
+                    <div
+                        class="choice"
+                        data-group="mekan"
+                        onclick="selectChoice(this,'mekan','Deniz')">
 
-                        <div class="choice-icon">🌊</div>
+                        <div class="choice-icon">
+                            🌊
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Deniz</strong>
-                            <span>Sahil, dalga sesi, biraz huzur.</span>
+
+                            <strong>
+                                Deniz
+                            </strong>
+
+                            <span>
+                                Sahil, dalga sesi, biraz huzur.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="mekan"
-                         onclick="selectChoice(this,'mekan','Doğa')">
 
-                        <div class="choice-icon">🌲</div>
+                    <div
+                        class="choice"
+                        data-group="mekan"
+                        onclick="selectChoice(this,'mekan','Doğa')">
+
+                        <div class="choice-icon">
+                            🌲
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Doğa</strong>
-                            <span>Yeşillik, sakinlik ve temiz hava.</span>
+
+                            <strong>
+                                Doğa
+                            </strong>
+
+                            <span>
+                                Yeşillik, sakinlik ve temiz hava.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="field">
-                <label>🍰 Hangisi?</label>
+
+                <label>
+                    🍰 Hangisi?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="tat"
-                         onclick="selectChoice(this,'tat','Tatlı')">
+                    <div
+                        class="choice"
+                        data-group="tat"
+                        onclick="selectChoice(this,'tat','Tatlı')">
 
-                        <div class="choice-icon">🍰</div>
+                        <div class="choice-icon">
+                            🍰
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Tatlı</strong>
-                            <span>Hayat biraz tatlı olsun.</span>
+
+                            <strong>
+                                Tatlı
+                            </strong>
+
+                            <span>
+                                Hayat biraz tatlı olsun.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="tat"
-                         onclick="selectChoice(this,'tat','Tuzlu')">
 
-                        <div class="choice-icon">🍟</div>
+                    <div
+                        class="choice"
+                        data-group="tat"
+                        onclick="selectChoice(this,'tat','Tuzlu')">
+
+                        <div class="choice-icon">
+                            🍟
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Tuzlu</strong>
-                            <span>Tatlıdan önce tuzlu.</span>
+
+                            <strong>
+                                Tuzlu
+                            </strong>
+
+                            <span>
+                                Tatlıdan önce tuzlu.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="field">
-                <label>🎬 Boş zaman?</label>
+
+                <label>
+                    🎬 Boş zaman?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="ekran"
-                         onclick="selectChoice(this,'ekran','Film')">
+                    <div
+                        class="choice"
+                        data-group="ekran"
+                        onclick="selectChoice(this,'ekran','Film')">
 
-                        <div class="choice-icon">🎬</div>
+                        <div class="choice-icon">
+                            🎬
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Film</strong>
-                            <span>Tek oturuşta bir hikâye.</span>
+
+                            <strong>
+                                Film
+                            </strong>
+
+                            <span>
+                                Tek oturuşta bir hikâye.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="ekran"
-                         onclick="selectChoice(this,'ekran','Dizi')">
 
-                        <div class="choice-icon">📺</div>
+                    <div
+                        class="choice"
+                        data-group="ekran"
+                        onclick="selectChoice(this,'ekran','Dizi')">
+
+                        <div class="choice-icon">
+                            📺
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Dizi</strong>
-                            <span>Bölüm bitince bir tane daha.</span>
+
+                            <strong>
+                                Dizi
+                            </strong>
+
+                            <span>
+                                Bölüm bitince bir tane daha.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="button-row">
 
-                <button class="secondary-btn" onclick="showPage(2)">
+                <button
+                    class="secondary-btn"
+                    onclick="showPage(2)">
                     Geri
                 </button>
 
-                <button class="primary-btn" onclick="nextPage(4)">
+                <button
+                    class="primary-btn"
+                    onclick="nextPage(4)">
                     Devam Et
                 </button>
 
@@ -804,129 +1025,210 @@ textarea{
 
         <div class="question-card">
 
-            <div class="question-number">04 / 05</div>
+            <div class="question-number">
+                04 / 07
+            </div>
 
             <div class="question-title">
-                Tamam, biraz daha sen.
+                Planlar nasıl?
             </div>
 
             <div class="question-sub">
-                Burada cevapların daha çok seni anlatıyor.
+                Küçük tercihler bazen çok şey anlatır.
             </div>
 
 
             <div class="field">
-                <label>🎲 Plan konusunda hangisisin?</label>
+
+                <label>
+                    🎲 Plan konusunda hangisisin?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="plan"
-                         onclick="selectChoice(this,'plan','Spontane')">
+                    <div
+                        class="choice"
+                        data-group="plan"
+                        onclick="selectChoice(this,'plan','Spontane')">
 
-                        <div class="choice-icon">🎲</div>
+                        <div class="choice-icon">
+                            🎲
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Spontane</strong>
-                            <span>O an ne gelirse.</span>
+
+                            <strong>
+                                Spontane
+                            </strong>
+
+                            <span>
+                                O an ne gelirse.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="plan"
-                         onclick="selectChoice(this,'plan','Önceden plan')">
 
-                        <div class="choice-icon">📅</div>
+                    <div
+                        class="choice"
+                        data-group="plan"
+                        onclick="selectChoice(this,'plan','Önceden plan')">
+
+                        <div class="choice-icon">
+                            📅
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Önceden plan</strong>
-                            <span>Ne yapacağımız belli olsun.</span>
+
+                            <strong>
+                                Önceden plan
+                            </strong>
+
+                            <span>
+                                Ne yapacağımız belli olsun.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="field">
-                <label>📱 İletişim?</label>
+
+                <label>
+                    📱 İletişim?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="iletisim"
-                         onclick="selectChoice(this,'iletisim','Mesajlaşmak')">
+                    <div
+                        class="choice"
+                        data-group="iletisim"
+                        onclick="selectChoice(this,'iletisim','Mesajlaşmak')">
 
-                        <div class="choice-icon">💬</div>
+                        <div class="choice-icon">
+                            💬
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Mesajlaşmak</strong>
-                            <span>Mesajla anlatmak daha kolay.</span>
+
+                            <strong>
+                                Mesajlaşmak
+                            </strong>
+
+                            <span>
+                                Mesajla anlatmak daha kolay.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="iletisim"
-                         onclick="selectChoice(this,'iletisim','Aramak')">
 
-                        <div class="choice-icon">📞</div>
+                    <div
+                        class="choice"
+                        data-group="iletisim"
+                        onclick="selectChoice(this,'iletisim','Aramak')">
+
+                        <div class="choice-icon">
+                            📞
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Aramak</strong>
-                            <span>Sesini duymak daha güzel.</span>
+
+                            <strong>
+                                Aramak
+                            </strong>
+
+                            <span>
+                                Sesini duymak daha güzel.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="field">
-                <label>🌅 Hangisi daha güzel?</label>
+
+                <label>
+                    🌅 Hangisi daha güzel?
+                </label>
 
                 <div class="choices">
 
-                    <div class="choice"
-                         data-group="gun"
-                         onclick="selectChoice(this,'gun','Gün doğumu')">
+                    <div
+                        class="choice"
+                        data-group="gun"
+                        onclick="selectChoice(this,'gun','Gün doğumu')">
 
-                        <div class="choice-icon">🌅</div>
+                        <div class="choice-icon">
+                            🌅
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Gün doğumu</strong>
-                            <span>Yeni bir gün hissi.</span>
+
+                            <strong>
+                                Gün doğumu
+                            </strong>
+
+                            <span>
+                                Yeni bir gün hissi.
+                            </span>
+
                         </div>
 
                     </div>
 
-                    <div class="choice"
-                         data-group="gun"
-                         onclick="selectChoice(this,'gun','Gün batımı')">
 
-                        <div class="choice-icon">🌇</div>
+                    <div
+                        class="choice"
+                        data-group="gun"
+                        onclick="selectChoice(this,'gun','Gün batımı')">
+
+                        <div class="choice-icon">
+                            🌇
+                        </div>
 
                         <div class="choice-text">
-                            <strong>Gün batımı</strong>
-                            <span>Günün en güzel tarafı.</span>
+
+                            <strong>
+                                Gün batımı
+                            </strong>
+
+                            <span>
+                                Günün en güzel tarafı.
+                            </span>
+
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
 
 
             <div class="button-row">
 
-                <button class="secondary-btn" onclick="showPage(3)">
+                <button
+                    class="secondary-btn"
+                    onclick="showPage(3)">
                     Geri
                 </button>
 
-                <button class="primary-btn" onclick="nextPage(5)">
+                <button
+                    class="primary-btn"
+                    onclick="nextPage(5)">
                     Devam Et
                 </button>
 
@@ -943,74 +1245,661 @@ textarea{
 
         <div class="question-card">
 
-            <div class="question-number">05 / 05</div>
+            <div class="question-number">
+                05 / 07
+            </div>
+
+            <div class="question-title">
+                Bir günün nasıl olsun?
+            </div>
+
+            <div class="question-sub">
+                Biraz hayal, biraz gerçek.
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    🏖️ Tatil denince?
+                </label>
+
+                <div class="choices">
+
+                    <div
+                        class="choice"
+                        data-group="tatil"
+                        onclick="selectChoice(this,'tatil','Deniz tatili')">
+
+                        <div class="choice-icon">
+                            🌊
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Deniz tatili
+                            </strong>
+
+                            <span>
+                                Güneş, deniz ve kafa dinlemek.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="tatil"
+                        onclick="selectChoice(this,'tatil','Doğa tatili')">
+
+                        <div class="choice-icon">
+                            🌲
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Doğa tatili
+                            </strong>
+
+                            <span>
+                                Sakinlik ve biraz uzaklaşmak.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="tatil"
+                        onclick="selectChoice(this,'tatil','Şehir gezisi')">
+
+                        <div class="choice-icon">
+                            🏙️
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Şehir gezisi
+                            </strong>
+
+                            <span>
+                                Yeni yerler görmek, keşfetmek.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="tatil"
+                        onclick="selectChoice(this,'tatil','Evde sakinlik')">
+
+                        <div class="choice-icon">
+                            🏠
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Evde sakinlik
+                            </strong>
+
+                            <span>
+                                Bazen en güzel plan hiçbir plan yapmamaktır.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    🍽️ Akşam planı?
+                </label>
+
+                <div class="choices">
+
+                    <div
+                        class="choice"
+                        data-group="aksam"
+                        onclick="selectChoice(this,'aksam','Güzel bir yemek')">
+
+                        <div class="choice-icon">
+                            🍽️
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Güzel bir yemek
+                            </strong>
+
+                            <span>
+                                Güzel yemek + güzel sohbet.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="aksam"
+                        onclick="selectChoice(this,'aksam','Kahve ve tatlı')">
+
+                        <div class="choice-icon">
+                            ☕
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Kahve + tatlı
+                            </strong>
+
+                            <span>
+                                Fazla plana gerek yok.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="aksam"
+                        onclick="selectChoice(this,'aksam','Sokak lezzetleri')">
+
+                        <div class="choice-icon">
+                            🌮
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Sokak lezzetleri
+                            </strong>
+
+                            <span>
+                                Gezerken bir şeyler keşfetmek.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="aksam"
+                        onclick="selectChoice(this,'aksam','Evde film')">
+
+                        <div class="choice-icon">
+                            🎬
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Evde film
+                            </strong>
+
+                            <span>
+                                Rahat bir akşam.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    🎁 Hangisi daha anlamlı?
+                </label>
+
+                <div class="choices">
+
+                    <div
+                        class="choice"
+                        data-group="jest"
+                        onclick="selectChoice(this,'jest','Küçük bir sürpriz')">
+
+                        <div class="choice-icon">
+                            🎁
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Küçük bir sürpriz
+                            </strong>
+
+                            <span>
+                                Beklenmedik ama düşünülmüş.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="jest"
+                        onclick="selectChoice(this,'jest','Güzel bir mesaj')">
+
+                        <div class="choice-icon">
+                            💌
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Güzel bir mesaj
+                            </strong>
+
+                            <span>
+                                Bazen birkaç kelime yeter.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="jest"
+                        onclick="selectChoice(this,'jest','Birlikte geçirilen zaman')">
+
+                        <div class="choice-icon">
+                            🫶
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Birlikte geçirilen zaman
+                            </strong>
+
+                            <span>
+                                Asıl mesele zaman ayırmak.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="jest"
+                        onclick="selectChoice(this,'jest','Düşünülmüş küçük bir detay')">
+
+                        <div class="choice-icon">
+                            🌷
+                        </div>
+
+                        <div class="choice-text">
+
+                            <strong>
+                                Düşünülmüş küçük bir detay
+                            </strong>
+
+                            <span>
+                                Küçük ama kişisel bir şey.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="showPage(4)">
+                    Geri
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="nextPage(6)">
+                    Devam Et
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 6 -->
+
+    <section class="screen" id="page6">
+
+        <div class="question-card">
+
+            <div class="question-number">
+                06 / 07
+            </div>
+
+            <div class="question-title">
+                Biraz daha sen.
+            </div>
+
+            <div class="question-sub">
+                Burada cevapların seni biraz daha anlatıyor.
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    ❤️ Birisiyle yakınlaşırken senin için en önemli şey?
+                </label>
+
+                <div class="choices">
+
+                    <div
+                        class="choice"
+                        data-group="yakinlik"
+                        onclick="selectChoice(this,'yakinlik','Güven')">
+
+                        <div class="choice-icon">🤝</div>
+
+                        <div class="choice-text">
+                            <strong>Güven</strong>
+                            <span>Yanında rahat hissedebilmek.</span>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="yakinlik"
+                        onclick="selectChoice(this,'yakinlik','Samimiyet')">
+
+                        <div class="choice-icon">❤️</div>
+
+                        <div class="choice-text">
+                            <strong>Samimiyet</strong>
+                            <span>Olduğun gibi olabilmek.</span>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="yakinlik"
+                        onclick="selectChoice(this,'yakinlik','Mizah')">
+
+                        <div class="choice-icon">😂</div>
+
+                        <div class="choice-text">
+                            <strong>Mizah</strong>
+                            <span>Birlikte gülebilmek.</span>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="yakinlik"
+                        onclick="selectChoice(this,'yakinlik','İletişim')">
+
+                        <div class="choice-icon">💬</div>
+
+                        <div class="choice-text">
+                            <strong>İletişim</strong>
+                            <span>Konuşabilmek ve anlaşabilmek.</span>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="choice"
+                        data-group="yakinlik"
+                        onclick="selectChoice(this,'yakinlik','Saygı')">
+
+                        <div class="choice-icon">🌿</div>
+
+                        <div class="choice-text">
+                            <strong>Saygı</strong>
+                            <span>Birbirinin alanına değer vermek.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    😊 Seni en kolay ne güldürür?
+                </label>
+
+                <textarea
+                    id="gulduren"
+                    placeholder="Bir insan, bir durum, saçma bir şey bile olabilir..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    🧠 İnsanların sende genelde yanlış anladığı bir şey var mı?
+                </label>
+
+                <textarea
+                    id="yanlisAnlasilan"
+                    placeholder="Varsa anlatabilirsin..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    🌸 Seni gerçekten değerli hissettiren şey nedir?
+                </label>
+
+                <textarea
+                    id="degerliHissettiren"
+                    placeholder="Küçük bir davranış bile olabilir."
+                ></textarea>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="showPage(5)">
+                    Geri
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="nextPage(7)">
+                    Devam Et
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- 7 -->
+
+    <section class="screen" id="page7">
+
+        <div class="question-card">
+
+            <div class="question-number">
+                07 / 07
+            </div>
 
             <div class="question-title">
                 Son birkaç şey.
             </div>
 
             <div class="question-sub">
-                Bunların cevabı tamamen sana kalmış.
+                Bu bölüm tamamen sana kalmış.
             </div>
 
 
             <div class="field">
-                <label>Seni en kolay ne mutlu eder?</label>
+
+                <label>
+                    😊 Seni en kolay ne mutlu eder?
+                </label>
 
                 <textarea
                     id="mutlu"
                     placeholder="Küçük bir şey bile olabilir..."
                 ></textarea>
+
             </div>
 
 
             <div class="field">
-                <label>Bir insanda en çok neye değer verirsin?</label>
+
+                <label>
+                    ❤️ Bir insanda en çok neye değer verirsin?
+                </label>
 
                 <textarea
                     id="deger"
                     placeholder="Samimiyet, güven, anlayış..."
                 ></textarea>
+
             </div>
 
 
             <div class="field">
-                <label>Seni bir insandan en hızlı soğutan şey nedir?</label>
+
+                <label>
+                    🚫 Seni bir insandan en hızlı soğutan şey nedir?
+                </label>
 
                 <textarea
                     id="sogutan"
                     placeholder="Bir davranış, bir tavır..."
                 ></textarea>
+
             </div>
 
 
             <div class="field">
-                <label>Birlikte yapmak istediğin küçük bir şey var mı?</label>
+
+                <label>
+                    ☕ Birlikte yapmak istediğin küçük bir şey var mı?
+                </label>
 
                 <textarea
                     id="birlikte"
                     placeholder="Çok büyük bir şey olmasına gerek yok."
                 ></textarea>
+
             </div>
 
 
             <div class="field">
-                <label>Eklemek istediğin başka bir şey?</label>
+
+                <label>
+                    🌷 İdeal bir boş günün nasıl geçer?
+                </label>
+
+                <textarea
+                    id="bosGun"
+                    placeholder="Sabahından akşamına kadar nasıl olurdu?"
+                ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    💭 Eklemek istediğin başka bir şey?
+                </label>
 
                 <textarea
                     id="ekstra"
                     placeholder="Burayı tamamen sana bırakıyorum."
                 ></textarea>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    ✨ Benim bilmemi istediğin ama sana doğrudan sormadığım bir şey var mı?
+                </label>
+
+                <textarea
+                    id="ozel"
+                    placeholder="İstersen anlat..."
+                ></textarea>
+
             </div>
 
 
             <div class="button-row">
 
-                <button class="secondary-btn" onclick="showPage(4)">
+                <button
+                    class="secondary-btn"
+                    onclick="showPage(6)">
                     Geri
                 </button>
 
-                <button class="primary-btn" onclick="finish()">
+                <button
+                    class="primary-btn"
+                    onclick="finish()">
                     DOSYAYI TAMAMLA
                 </button>
 
@@ -1027,13 +1916,18 @@ textarea{
 
         <div class="complete-card">
 
-            <div class="check">✓</div>
+            <div class="check">
+                ✓
+            </div>
 
-            <h2>Teşekkürler Öykü.</h2>
+            <h2>
+                Teşekkürler Öykü.
+            </h2>
 
             <p>
                 Dosya tamamlandı.
             </p>
+
 
             <div class="final-message">
 
@@ -1056,14 +1950,23 @@ textarea{
             </div>
 
 
-            <button class="whatsapp-btn" onclick="sendWhatsApp()">
+            <button
+                class="whatsapp-btn"
+                onclick="sendWhatsApp()">
+
                 💬 CEVAPLARIMI GÖNDER
+
             </button>
+
 
             <div style="margin-top:12px;">
 
-                <button class="secondary-btn" onclick="goHome()">
+                <button
+                    class="secondary-btn"
+                    onclick="goHome()">
+
                     ANA SAYFA
+
                 </button>
 
             </div>
@@ -1082,11 +1985,13 @@ textarea{
 
 <script>
 
-/* =================================================
+/* =====================================================
    WHATSAPP NUMARASI
-   Başında + veya 0 olmadan yazılır.
-   0533 451 38 93 → 905334513893
-   ================================================= */
+
+   0533 451 38 93
+   ↓
+   905334513893
+   ===================================================== */
 
 const WHATSAPP_NUMBER = "905334513893";
 
@@ -1096,20 +2001,36 @@ let answers = {
     hitap:"",
     kelimeler:"",
     sarki:"",
+
     icecek:"",
     aktivite:"",
     zaman:"",
+
     mekan:"",
     tat:"",
     ekran:"",
+
     plan:"",
     iletisim:"",
     gun:"",
+
+    tatil:"",
+    aksam:"",
+    jest:"",
+
+    yakinlik:"",
+
+    gulduren:"",
+    yanlisAnlasilan:"",
+    degerliHissettiren:"",
+
     mutlu:"",
     deger:"",
     sogutan:"",
     birlikte:"",
-    ekstra:""
+    bosGun:"",
+    ekstra:"",
+    ozel:""
 
 };
 
@@ -1181,7 +2102,7 @@ function showPage(number){
 
 function updateProgress(page){
 
-    const total=5;
+    const total=7;
 
     const percent=Math.round(
         (page/total)*100
@@ -1203,36 +2124,51 @@ function updateProgress(page){
 
 function collectInputs(){
 
-    answers.hitap=
-        document.getElementById("hitap").value.trim();
+    const ids = [
 
-    answers.kelimeler=
-        document.getElementById("kelimeler").value.trim();
+        "hitap",
+        "kelimeler",
+        "sarki",
 
-    answers.sarki=
-        document.getElementById("sarki").value.trim();
+        "gulduren",
+        "yanlisAnlasilan",
+        "degerliHissettiren",
 
-    answers.mutlu=
-        document.getElementById("mutlu").value.trim();
+        "mutlu",
+        "deger",
+        "sogutan",
+        "birlikte",
+        "bosGun",
+        "ekstra",
+        "ozel"
 
-    answers.deger=
-        document.getElementById("deger").value.trim();
+    ];
 
-    answers.sogutan=
-        document.getElementById("sogutan").value.trim();
 
-    answers.birlikte=
-        document.getElementById("birlikte").value.trim();
+    ids.forEach(id=>{
 
-    answers.ekstra=
-        document.getElementById("ekstra").value.trim();
+        const element =
+            document.getElementById(id);
+
+        if(element){
+
+            answers[id] =
+                element.value.trim();
+
+        }
+
+    });
 
 }
 
 
 /* SEÇİM */
 
-function selectChoice(element,group,value){
+function selectChoice(
+    element,
+    group,
+    value
+){
 
     document
         .querySelectorAll(
@@ -1242,7 +2178,9 @@ function selectChoice(element,group,value){
             item.classList.remove("selected");
         });
 
+
     element.classList.add("selected");
+
 
     answers[group]=value;
 
@@ -1280,33 +2218,35 @@ function finish(){
 }
 
 
-/* HTML TEMİZLEME */
+/* BOŞ CEVAP */
 
 function clean(text){
 
-    if(!text){
+    if(!text || !text.trim()){
+
         return "Belirtilmedi";
+
     }
 
-    return String(text);
+    return text.trim();
 
 }
 
 
-/* WHATSAPP */
+/* WHATSAPP MESAJI */
 
 function sendWhatsApp(){
 
     collectInputs();
 
 
-    let message = `🌷 ÖYKÜ DOSYASI
+    const message = `🌷 ÖYKÜ DOSYASI — TAMAMLANDI
 
 Merhaba :)
 
 Dosyayı tamamladım. Cevaplarım şöyle:
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
 
 👤 NASIL HİTAP EDİLMELİ?
 ${clean(answers.hitap)}
@@ -1317,7 +2257,7 @@ ${clean(answers.kelimeler)}
 🎵 ŞU SIRALAR BENİ ANLATAN ŞARKI
 ${clean(answers.sarki)}
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
 
 ☕ İÇECEK
 ${clean(answers.icecek)}
@@ -1346,12 +2286,35 @@ ${clean(answers.iletisim)}
 🌅 GÜN DOĞUMU / GÜN BATIMI
 ${clean(answers.gun)}
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━
 
-😊 BENİ EN KOLAY NE MUTLU EDER?
+🏖️ TATİL
+${clean(answers.tatil)}
+
+🍽️ AKŞAM PLANI
+${clean(answers.aksam)}
+
+🎁 BENİM İÇİN ANLAMLI OLAN
+${clean(answers.jest)}
+
+❤️ YAKINLAŞIRKEN BENİM İÇİN ÖNEMLİ OLAN
+${clean(answers.yakinlik)}
+
+━━━━━━━━━━━━━━━━━━
+
+😂 BENİ EN KOLAY GÜLDÜREN ŞEY
+${clean(answers.gulduren)}
+
+🧠 İNSANLARIN BENDE YANLIŞ ANLADIĞI ŞEY
+${clean(answers.yanlisAnlasilan)}
+
+🌸 BENİ DEĞERLİ HİSSETTİREN ŞEY
+${clean(answers.degerliHissettiren)}
+
+😊 BENİ EN KOLAY MUTLU EDEN ŞEY
 ${clean(answers.mutlu)}
 
-❤️ BİR İNSANDA EN ÇOK NEYE DEĞER VERİRİM?
+❤️ BİR İNSANDA EN ÇOK DEĞER VERDİĞİM ŞEY
 ${clean(answers.deger)}
 
 🚫 BENİ EN HIZLI SOĞUTAN ŞEY
@@ -1360,12 +2323,20 @@ ${clean(answers.sogutan)}
 ☕ BİRLİKTE YAPMAK İSTEDİĞİM KÜÇÜK ŞEY
 ${clean(answers.birlikte)}
 
+🌷 İDEAL BOŞ GÜNÜM
+${clean(answers.bosGun)}
+
 💭 EKLEMEK İSTEDİĞİM BAŞKA BİR ŞEY
 ${clean(answers.ekstra)}
 
-━━━━━━━━━━━━━━
+✨ SANA DOĞRUDAN SORMADIĞIN AMA BİLMENİ İSTEDİĞİM ŞEY
+${clean(answers.ozel)}
 
-Dosya tamamlandı. 🌷`;
+━━━━━━━━━━━━━━━━━━
+
+🌷 Dosya tamamlandı.
+
+Gerisini sohbetlerden öğrenirsin :)`;
 
 
     const url =
