@@ -1,2359 +1,1958 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="bizimPlan">
+<div id="bpSiteLogin">
 
-<title>Öykü Dosyası</title>
+  <div class="bp-login-card">
 
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+    <div class="bp-login-lock">🔐</div>
 
-:root{
-    --bg:#fff8f7;
-    --card:rgba(255,255,255,.90);
-    --text:#302b2d;
-    --muted:#8c7d82;
-    --pink:#d9899c;
-    --pink-dark:#b9687d;
-    --pink-soft:#f8dfe5;
-    --border:#f0dfe3;
-    --green:#25D366;
-    --shadow:0 20px 60px rgba(120,70,85,.10);
-}
+    <div class="bp-login-small">
+     öykü
+    </div>
 
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:
-        radial-gradient(circle at 10% 10%,rgba(245,194,205,.35),transparent 28%),
-        radial-gradient(circle at 90% 80%,rgba(255,220,180,.28),transparent 28%),
-        var(--bg);
-    color:var(--text);
-    min-height:100vh;
-}
+    <h2>Plan</h2>
 
-button,input,textarea{
-    font:inherit;
-}
+    <p>
+      <br>
+      
+    </p>
 
-.app{
-    width:100%;
-    max-width:720px;
-    margin:auto;
-    padding:25px 18px 50px;
-}
+    <input
+      type="password"
+      id="bpSitePassword"
+      placeholder="Şifre..."
+      autocomplete="off"
+    >
 
-.topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:22px;
-}
+    <button type="button" onclick="bpEnterSite()">
+      Giriş Yap ♡
+    </button>
 
-.brand{
-    font-size:13px;
-    letter-spacing:2px;
-    font-weight:700;
-    color:var(--pink-dark);
-}
+    <div id="bpSiteError">
+      Yanlış şifre. Biraz daha düşün bakalım. 👀
+    </div>
 
-.version{
-    font-size:11px;
-    color:var(--muted);
-    background:rgba(255,255,255,.75);
-    padding:7px 10px;
-    border-radius:20px;
-    border:1px solid var(--border);
-}
+    <small>
+      Balık hafızalı :)
+    </small>
 
-.progress-wrap{
-    display:none;
-    margin-bottom:25px;
-}
+  </div>
 
-.progress-info{
-    display:flex;
-    justify-content:space-between;
-    color:var(--muted);
-    font-size:12px;
-    margin-bottom:8px;
-}
+</div>
+  <style>
+    #bizimPlan{
+      --bp-bg:#f6f0e8;
+      --bp-paper:#fffdf9;
+      --bp-dark:#292522;
+      --bp-muted:#817870;
+      --bp-red:#9b4b4b;
+      --bp-red-light:#c97878;
+      --bp-green:#627565;
+      --bp-line:#e7ded3;
+      --bp-gold:#b08b5a;
+      --bp-shadow:0 18px 50px rgba(61,45,35,.10);
 
-.progress{
-    width:100%;
-    height:6px;
-    background:#f1e7e9;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress-bar{
-    height:100%;
-    width:0;
-    background:linear-gradient(90deg,#d9899c,#e9a9b8);
-    border-radius:20px;
-    transition:.4s ease;
-}
-
-.screen{
-    display:none;
-    animation:fadeUp .45s ease;
-}
-
-.screen.active{
-    display:block;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(15px);
+      width:100%;
+      max-width:1200px;
+      margin:0 auto;
+      padding:20px;
+      box-sizing:border-box;
+      color:var(--bp-dark);
+      font-family:Arial,Helvetica,sans-serif;
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+
+    #bizimPlan *{
+      box-sizing:border-box;
     }
+
+    /* HERO */
+
+    #bizimPlan .bp-hero{
+      position:relative;
+      overflow:hidden;
+      padding:55px 45px;
+      border-radius:32px;
+      background:
+        radial-gradient(circle at 90% 10%,rgba(201,120,120,.20),transparent 28%),
+        radial-gradient(circle at 10% 90%,rgba(98,117,101,.16),transparent 30%),
+        var(--bp-paper);
+      border:1px solid var(--bp-line);
+      box-shadow:var(--bp-shadow);
+      margin-bottom:25px;
+    }
+
+    #bizimPlan .bp-eyebrow{
+      color:var(--bp-red);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:2px;
+      margin-bottom:15px;
+      text-transform:uppercase;
+    }
+
+    #bizimPlan .bp-hero h1{
+      margin:0 0 15px;
+      font-size:clamp(34px,5vw,64px);
+      line-height:1;
+      letter-spacing:-2px;
+    }
+
+    #bizimPlan .bp-hero p{
+      max-width:650px;
+      line-height:1.8;
+      color:var(--bp-muted);
+      font-size:16px;
+      margin:0;
+    }
+
+    #bizimPlan .bp-heart{
+      position:absolute;
+      right:45px;
+      top:35px;
+      font-size:80px;
+      opacity:.08;
+      transform:rotate(-12deg);
+    }
+
+    /* SECTION */
+
+    #bizimPlan .bp-section{
+      margin-top:28px;
+    }
+
+    #bizimPlan .bp-section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:15px;
+    }
+
+    #bizimPlan .bp-section-title{
+      margin:0;
+      font-size:25px;
+      letter-spacing:-.5px;
+    }
+
+    #bizimPlan .bp-section-desc{
+      color:var(--bp-muted);
+      margin:5px 0 0;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    /* PERSONAL BOX */
+
+    #bizimPlan .bp-personal{
+      padding:28px;
+      border-radius:25px;
+      background:linear-gradient(135deg,#fffdf9,#f4e8df);
+      border:1px solid var(--bp-line);
+      box-shadow:var(--bp-shadow);
+    }
+
+    #bizimPlan .bp-personal-top{
+      display:flex;
+      gap:15px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+
+    #bizimPlan .bp-avatar{
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#f1d9d2;
+      font-size:25px;
+    }
+
+    #bizimPlan .bp-personal h3{
+      margin:0 0 4px;
+      font-size:19px;
+    }
+
+    #bizimPlan .bp-personal small{
+      color:var(--bp-muted);
+    }
+
+    /* MOODS */
+
+    #bizimPlan .bp-moods{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    #bizimPlan .bp-mood{
+      border:1px solid var(--bp-line);
+      background:#fff;
+      padding:18px 14px;
+      border-radius:18px;
+      cursor:pointer;
+      transition:.25s ease;
+      text-align:left;
+    }
+
+    #bizimPlan .bp-mood:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 25px rgba(61,45,35,.08);
+      border-color:var(--bp-red-light);
+    }
+
+    #bizimPlan .bp-mood.active{
+      background:var(--bp-dark);
+      color:#fff;
+      border-color:var(--bp-dark);
+    }
+
+    #bizimPlan .bp-mood-icon{
+      font-size:25px;
+      display:block;
+      margin-bottom:10px;
+    }
+
+    #bizimPlan .bp-mood strong{
+      display:block;
+      font-size:14px;
+    }
+
+    #bizimPlan .bp-mood span{
+      display:block;
+      font-size:11px;
+      opacity:.65;
+      margin-top:5px;
+    }
+
+    #bizimPlan .bp-mood-result{
+      display:none;
+      margin-top:18px;
+      padding:22px;
+      border-radius:20px;
+      background:#f8f2eb;
+      border:1px solid var(--bp-line);
+    }
+
+    #bizimPlan .bp-mood-result.show{
+      display:block;
+      animation:bpFade .35s ease;
+    }
+
+    #bizimPlan .bp-result-title{
+      font-weight:800;
+      font-size:18px;
+      margin-bottom:7px;
+    }
+
+    #bizimPlan .bp-result-text{
+      color:var(--bp-muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    #bizimPlan .bp-mini-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:15px;
+    }
+
+    #bizimPlan .bp-mini-btn{
+      border:1px solid var(--bp-line);
+      background:#fff;
+      border-radius:30px;
+      padding:10px 15px;
+      cursor:pointer;
+      font-size:13px;
+      transition:.2s;
+    }
+
+    #bizimPlan .bp-mini-btn:hover{
+      background:var(--bp-red);
+      color:white;
+      border-color:var(--bp-red);
+    }
+
+    /* HAPPY SYSTEM */
+
+    #bizimPlan .bp-happy-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    #bizimPlan .bp-happy{
+      padding:22px;
+      border:1px solid var(--bp-line);
+      border-radius:22px;
+      background:var(--bp-paper);
+      cursor:pointer;
+      transition:.25s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    #bizimPlan .bp-happy:after{
+      content:"♡";
+      position:absolute;
+      right:-5px;
+      bottom:-20px;
+      font-size:80px;
+      opacity:.04;
+    }
+
+    #bizimPlan .bp-happy:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--bp-shadow);
+    }
+
+    #bizimPlan .bp-happy-icon{
+      font-size:30px;
+      margin-bottom:13px;
+    }
+
+    #bizimPlan .bp-happy strong{
+      display:block;
+      margin-bottom:7px;
+    }
+
+    #bizimPlan .bp-happy small{
+      color:var(--bp-muted);
+      line-height:1.5;
+    }
+
+    /* ESCAPE */
+
+    #bizimPlan .bp-escape{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+      padding:25px;
+      border-radius:28px;
+      background:
+        linear-gradient(135deg,rgba(98,117,101,.13),rgba(255,253,249,.95));
+      border:1px solid var(--bp-line);
+    }
+
+    #bizimPlan .bp-map{
+      min-height:350px;
+      border-radius:22px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 25%,rgba(155,75,75,.18),transparent 18%),
+        radial-gradient(circle at 70% 70%,rgba(98,117,101,.25),transparent 25%),
+        linear-gradient(135deg,#e8e0d5,#d7ddd5);
+    }
+
+    #bizimPlan .bp-map-line{
+      position:absolute;
+      width:75%;
+      height:70%;
+      left:12%;
+      top:15%;
+      border:2px dashed rgba(41,37,34,.25);
+      border-radius:48% 52% 40% 60%;
+      transform:rotate(-8deg);
+    }
+
+    #bizimPlan .bp-pin{
+      position:absolute;
+      width:45px;
+      height:45px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      box-shadow:0 8px 20px rgba(0,0,0,.12);
+      cursor:pointer;
+      transition:.2s;
+      font-size:20px;
+    }
+
+    #bizimPlan .bp-pin:hover{
+      transform:scale(1.12);
+    }
+
+    #bizimPlan .pin1{left:18%;top:20%}
+    #bizimPlan .pin2{left:63%;top:18%}
+    #bizimPlan .pin3{left:43%;top:53%}
+    #bizimPlan .pin4{left:72%;top:65%}
+    #bizimPlan .pin5{left:25%;top:70%}
+
+    #bizimPlan .bp-escape-info{
+      padding:15px;
+    }
+
+    #bizimPlan .bp-escape-info h3{
+      margin:0 0 8px;
+      font-size:27px;
+    }
+
+    #bizimPlan .bp-escape-info p{
+      color:var(--bp-muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    #bizimPlan .bp-destination{
+      display:none;
+      margin-top:18px;
+      padding:18px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid var(--bp-line);
+    }
+
+    #bizimPlan .bp-destination.show{
+      display:block;
+      animation:bpFade .3s ease;
+    }
+
+    #bizimPlan .bp-destination strong{
+      display:block;
+      font-size:19px;
+      margin-bottom:6px;
+    }
+
+    #bizimPlan .bp-destination span{
+      color:var(--bp-muted);
+      line-height:1.5;
+      font-size:13px;
+    }
+
+    /* SECRET */
+
+    #bizimPlan .bp-secret{
+      position:relative;
+      padding:32px;
+      border-radius:28px;
+      overflow:hidden;
+      color:white;
+      background:
+        radial-gradient(circle at 85% 20%,rgba(201,120,120,.20),transparent 25%),
+        radial-gradient(circle at 10% 80%,rgba(176,139,90,.15),transparent 30%),
+        #292522;
+      box-shadow:0 20px 55px rgba(41,37,34,.22);
+    }
+
+    #bizimPlan .bp-secret:before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:50%;
+      right:-60px;
+      top:-70px;
+    }
+
+    #bizimPlan .bp-secret small{
+      color:#c8bdb4;
+      letter-spacing:2px;
+      font-weight:700;
+    }
+
+    #bizimPlan .bp-secret h3{
+      font-size:28px;
+      margin:10px 0;
+    }
+
+    #bizimPlan .bp-secret p{
+      color:#bfb5ae;
+      max-width:650px;
+      line-height:1.7;
+    }
+
+    #bizimPlan .bp-secret-btn{
+      margin-top:15px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:white;
+      border-radius:30px;
+      padding:13px 20px;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    #bizimPlan .bp-secret-btn:hover{
+      background:rgba(255,255,255,.15);
+      transform:translateY(-2px);
+    }
+
+    #bizimPlan .bp-secret-content{
+      display:none;
+      margin-top:22px;
+      padding:25px;
+      border-radius:20px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      text-align:center;
+    }
+
+    #bizimPlan .bp-secret-content.show{
+      display:block;
+      animation:bpSecret .7s ease;
+    }
+
+    #bizimPlan .bp-secret-content .big-heart{
+      font-size:45px;
+      margin-bottom:10px;
+    }
+
+    #bizimPlan .bp-secret-content h4{
+      font-size:23px;
+      margin:5px 0 12px;
+    }
+
+    #bizimPlan .bp-secret-content p{
+      margin:0 auto;
+      max-width:550px;
+      color:#d6ccc5;
+    }
+
+    /* ACTIVITIES */
+
+    #bizimPlan .bp-activities{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    #bizimPlan .bp-activity{
+      border:1px solid var(--bp-line);
+      background:var(--bp-paper);
+      border-radius:20px;
+      padding:22px 17px;
+      cursor:pointer;
+      transition:.25s;
+      min-height:150px;
+    }
+
+    #bizimPlan .bp-activity:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--bp-shadow);
+      border-color:#d4b8ae;
+    }
+
+    #bizimPlan .bp-activity-icon{
+      font-size:30px;
+      margin-bottom:12px;
+    }
+
+    #bizimPlan .bp-activity strong{
+      display:block;
+      margin-bottom:5px;
+    }
+
+    #bizimPlan .bp-activity span{
+      color:var(--bp-muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    /* BUTTON */
+
+    #bizimPlan .bp-main-btn{
+      border:0;
+      background:var(--bp-red);
+      color:white;
+      border-radius:30px;
+      padding:13px 20px;
+      cursor:pointer;
+      font-weight:700;
+      transition:.2s;
+    }
+
+    #bizimPlan .bp-main-btn:hover{
+      background:#813d3d;
+      transform:translateY(-2px);
+    }
+
+    /* MODAL */
+
+    #bizimPlan .bp-overlay{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:999999;
+      background:rgba(25,20,17,.55);
+      backdrop-filter:blur(7px);
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    #bizimPlan .bp-overlay.show{
+      display:flex;
+    }
+
+    #bizimPlan .bp-modal{
+      width:min(500px,100%);
+      background:var(--bp-paper);
+      border-radius:28px;
+      padding:30px;
+      text-align:center;
+      box-shadow:0 30px 80px rgba(0,0,0,.25);
+      animation:bpModal .3s ease;
+    }
+
+    #bizimPlan .bp-modal-icon{
+      font-size:50px;
+      margin-bottom:10px;
+    }
+
+    #bizimPlan .bp-modal h3{
+      margin:0 0 10px;
+      font-size:27px;
+    }
+
+    #bizimPlan .bp-modal p{
+      color:var(--bp-muted);
+      line-height:1.6;
+    }
+
+    #bizimPlan .bp-modal-actions{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:22px;
+      flex-wrap:wrap;
+    }
+
+    #bizimPlan .bp-close-btn{
+      border:1px solid var(--bp-line);
+      background:white;
+      border-radius:30px;
+      padding:12px 18px;
+      cursor:pointer;
+    }
+
+    /* TOAST */
+
+    #bizimPlan .bp-toast{
+      position:fixed;
+      left:50%;
+      bottom:25px;
+      transform:translate(-50%,20px);
+      background:#292522;
+      color:white;
+      padding:13px 18px;
+      border-radius:30px;
+      opacity:0;
+      pointer-events:none;
+      z-index:1000000;
+      transition:.3s;
+      font-size:13px;
+      box-shadow:0 10px 30px rgba(0,0,0,.2);
+    }
+
+    #bizimPlan .bp-toast.show{
+      opacity:1;
+      transform:translate(-50%,0);
+    }
+
+    /* FOOTER */
+
+    #bizimPlan .bp-footer{
+      text-align:center;
+      padding:35px 10px 15px;
+      color:var(--bp-muted);
+      font-size:12px;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes bpFade{
+      from{opacity:0;transform:translateY(8px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @keyframes bpModal{
+      from{opacity:0;transform:scale(.94)}
+      to{opacity:1;transform:scale(1)}
+    }
+
+    @keyframes bpSecret{
+      from{opacity:0;transform:translateY(15px) scale(.98)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+      #bizimPlan .bp-moods{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      #bizimPlan .bp-activities{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      #bizimPlan .bp-happy-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      #bizimPlan .bp-escape{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      #bizimPlan{
+        padding:10px;
+      }
+
+      #bizimPlan .bp-hero{
+        padding:35px 23px;
+        border-radius:25px;
+      }
+
+      #bizimPlan .bp-heart{
+        right:15px;
+        top:15px;
+        font-size:60px;
+      }
+
+      #bizimPlan .bp-section-title{
+        font-size:21px;
+      }
+
+      #bizimPlan .bp-moods{
+        grid-template-columns:1fr 1fr;
+      }
+
+      #bizimPlan .bp-happy-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      #bizimPlan .bp-activities{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+
+      #bizimPlan .bp-activity{
+        min-height:135px;
+        padding:18px 14px;
+      }
+
+      #bizimPlan .bp-map{
+        min-height:290px;
+      }
+
+      #bizimPlan .bp-secret{
+        padding:25px 20px;
+      }
+    }
+
+/* ================================
+   PLANIMIZ SİTE GİRİŞİ
+================================ */
+
+#bizimPlan{
+  position:relative;
 }
 
-/* ANA SAYFA */
-
-.home-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-    backdrop-filter:blur(14px);
-    border-radius:28px;
-    padding:50px 32px;
-    text-align:center;
+#bpSiteLogin{
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(155,75,75,.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(98,117,101,.12),
+      transparent 35%
+    ),
+    #f5f0e8;
 }
 
-.icon{
-    width:76px;
-    height:76px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 25px;
-    border-radius:24px;
-    background:var(--pink-soft);
-    font-size:34px;
+.bp-login-card{
+  width:100%;
+  max-width:420px;
+  padding:42px 30px;
+  box-sizing:border-box;
+  text-align:center;
+
+  background:#fffdf9;
+  border:1px solid #e7ded3;
+  border-radius:28px;
+
+  box-shadow:
+    0 25px 70px rgba(61,45,35,.15);
 }
 
-.eyebrow{
-    color:var(--pink-dark);
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:2.5px;
-    margin-bottom:12px;
+.bp-login-lock{
+  width:72px;
+  height:72px;
+  margin:0 auto 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+  background:#fff;
+
+  border:1px solid #e7ded3;
+
+  font-size:31px;
 }
 
-h1{
-    font-size:clamp(32px,8vw,48px);
-    letter-spacing:-1.5px;
-    margin-bottom:15px;
+.bp-login-small{
+  margin-bottom:7px;
+
+  color:#9b4b4b;
+
+  font-size:11px;
+  font-weight:800;
+
+  letter-spacing:2px;
 }
 
-.home-description{
-    max-width:500px;
-    margin:auto;
-    line-height:1.8;
-    color:var(--muted);
-    font-size:15px;
+.bp-login-card h2{
+  margin:0 0 10px;
+
+  color:#292522;
+
+  font-size:32px;
 }
 
-.notice{
-    margin:25px 0;
-    padding:15px;
-    background:#fff6f7;
-    border:1px solid var(--border);
-    border-radius:15px;
-    font-size:13px;
-    color:#786a6e;
-    line-height:1.6;
+.bp-login-card p{
+  margin:0 0 22px;
+
+  color:#817870;
+
+  line-height:1.7;
 }
 
-/* BUTONLAR */
+#bpSitePassword{
+  width:100%;
+  height:52px;
 
-.primary-btn{
-    width:100%;
-    border:none;
-    cursor:pointer;
-    color:white;
-    background:linear-gradient(135deg,#d9899c,#c8758b);
-    padding:16px 20px;
-    border-radius:15px;
-    font-weight:700;
-    font-size:14px;
-    transition:.25s;
-    box-shadow:0 10px 25px rgba(201,117,139,.20);
+  box-sizing:border-box;
+
+  padding:0 16px;
+
+  border:1px solid #ddd1c4;
+  border-radius:14px;
+
+  background:#fff;
+
+  color:#292522;
+
+  font-size:16px;
+
+  outline:none;
 }
 
-.primary-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 14px 30px rgba(201,117,139,.27);
+#bpSitePassword:focus{
+  border-color:#9b4b4b;
+
+  box-shadow:
+    0 0 0 4px rgba(155,75,75,.08);
 }
 
-.secondary-btn{
-    width:100%;
-    border:1px solid var(--border);
-    cursor:pointer;
-    color:var(--text);
-    background:white;
-    padding:15px 20px;
-    border-radius:15px;
-    font-weight:600;
-    font-size:14px;
-    transition:.2s;
+.bp-login-card button{
+  width:100%;
+  height:52px;
+
+  margin-top:10px;
+
+  border:0;
+  border-radius:14px;
+
+  background:#292522;
+  color:#fff;
+
+  font-size:15px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-.secondary-btn:hover{
-    background:#fff7f8;
+.bp-login-card button:hover{
+  background:#9b4b4b;
+  transform:translateY(-2px);
 }
 
-.whatsapp-btn{
-    width:100%;
-    border:none;
-    cursor:pointer;
-    color:white;
-    background:var(--green);
-    padding:17px 20px;
-    border-radius:15px;
-    font-weight:700;
-    font-size:14px;
-    transition:.25s;
-    box-shadow:0 10px 25px rgba(37,211,102,.18);
+#bpSiteError{
+  display:none;
+
+  margin-top:12px;
+  padding:11px;
+
+  border-radius:12px;
+
+  background:#fff0f0;
+  color:#9b4b4b;
+
+  font-size:13px;
 }
 
-.whatsapp-btn:hover{
-    transform:translateY(-2px);
-}
+.bp-login-card small{
+  display:block;
 
-.button-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-top:25px;
-}
+  margin-top:17px;
 
-/* SORU */
+  color:#aaa098;
 
-.question-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-    border-radius:24px;
-    padding:30px;
-}
-
-.question-number{
-    font-size:11px;
-    letter-spacing:2px;
-    color:var(--pink-dark);
-    font-weight:700;
-    margin-bottom:10px;
-}
-
-.question-title{
-    font-size:25px;
-    letter-spacing:-.5px;
-    margin-bottom:8px;
-}
-
-.question-sub{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:24px;
-}
-
-.field{
-    margin-bottom:22px;
-}
-
-.field label{
-    display:block;
-    font-size:13px;
-    font-weight:600;
-    margin-bottom:8px;
-}
-
-input,
-textarea{
-    width:100%;
-    border:1px solid var(--border);
-    background:white;
-    border-radius:13px;
-    padding:14px;
-    outline:none;
-    color:var(--text);
-    transition:.2s;
-}
-
-input:focus,
-textarea:focus{
-    border-color:var(--pink);
-    box-shadow:0 0 0 4px rgba(217,137,156,.08);
-}
-
-textarea{
-    min-height:105px;
-    resize:vertical;
-    line-height:1.6;
-}
-
-/* SEÇENEKLER */
-
-.choices{
-    display:grid;
-    gap:10px;
-}
-
-.choice{
-    border:1px solid var(--border);
-    background:white;
-    border-radius:15px;
-    padding:15px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    transition:.2s;
-}
-
-.choice:hover{
-    border-color:#dfa0ae;
-    transform:translateY(-1px);
-}
-
-.choice.selected{
-    border-color:var(--pink);
-    background:#fff3f5;
-    box-shadow:0 6px 18px rgba(217,137,156,.10);
-}
-
-.choice-icon{
-    width:39px;
-    height:39px;
-    border-radius:11px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#fff0f3;
-    font-size:19px;
-    flex-shrink:0;
-}
-
-.choice-text strong{
-    display:block;
-    font-size:14px;
-    margin-bottom:3px;
-}
-
-.choice-text span{
-    font-size:12px;
-    color:var(--muted);
-}
-
-/* SON */
-
-.complete-card{
-    text-align:center;
-    background:var(--card);
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-    border-radius:28px;
-    padding:48px 30px;
-}
-
-.check{
-    width:72px;
-    height:72px;
-    margin:0 auto 25px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:var(--pink-soft);
-    font-size:30px;
-}
-
-.complete-card h2{
-    font-size:30px;
-    margin-bottom:15px;
-}
-
-.complete-card p{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
-}
-
-.final-message{
-    margin:25px 0;
-    padding:20px;
-    background:#fff7f8;
-    border-radius:16px;
-    color:#66585d;
-    line-height:1.8;
-    font-size:14px;
-}
-
-.footer{
-    text-align:center;
-    margin-top:20px;
-    color:#b6a7ab;
-    font-size:11px;
+  font-size:12px;
 }
 
 @media(max-width:600px){
 
-    .app{
-        padding:18px 12px 35px;
-    }
+  #bpSiteLogin{
+    padding:15px;
+  }
 
-    .home-card{
-        padding:38px 22px;
-    }
+  .bp-login-card{
+    padding:35px 20px;
+    border-radius:23px;
+  }
 
-    .question-card{
-        padding:23px 18px;
-    }
-
-    .question-title{
-        font-size:22px;
-    }
-
-    .button-row{
-        grid-template-columns:1fr;
-    }
+  .bp-login-card h2{
+    font-size:28px;
+  }
 
 }
-</style>
-</head>
+    
+  </style>
 
-<body>
 
-<div class="app">
+  <!-- HERO -->
 
-    <div class="topbar">
-        <div class="brand">ÖYKÜ DOSYASI</div>
-        <div class="version">v2.0</div>
+  <section class="bp-hero">
+    <div class="bp-eyebrow">♡ ÖYKÜ </div>
+
+    <h1>Bugün canın ne istiyor?</h1>
+
+    <p>
+     
+    </p>
+
+    <div class="bp-heart">♡</div>
+  </section>
+
+
+  <!-- 1. BUGÜNÜN MODUNA GÖRE PLAN -->
+
+  <section class="bp-section">
+
+    <div class="bp-section-head">
+      <div>
+        <h2 class="bp-section-title">🌷 Bugünün moduna göre plan</h2>
+        <p class="bp-section-desc">
+          Öykü bugün nasıl hissediyorsa planı ona göre seçelim.
+        </p>
+      </div>
     </div>
 
-    <div class="progress-wrap" id="progressWrap">
+    <div class="bp-personal">
 
-        <div class="progress-info">
-            <span id="progressText">1 / 7</span>
-            <span id="progressPercent">%14</span>
+      <div class="bp-personal-top">
+        <div class="bp-avatar">🌷</div>
+        <div>
+          <h3>Öykü bugün ne istiyor?</h3>
+          <small>Birini seç, gerisini biz hallederiz.</small>
         </div>
+      </div>
 
-        <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
+      <div class="bp-moods">
+
+        <button class="bp-mood" onclick="bpMood(this,'sakin')">
+          <span class="bp-mood-icon">🌿</span>
+          <strong>Sakinim</strong>
+          <span>Biraz huzur iyi gelir.</span>
+        </button>
+
+        <button class="bp-mood" onclick="bpMood(this,'sohbet')">
+          <span class="bp-mood-icon">💬</span>
+          <strong>Konuşmak istiyorum</strong>
+          <span>Uzun bir sohbet olabilir.</span>
+        </button>
+
+        <button class="bp-mood" onclick="bpMood(this,'kafa')">
+          <span class="bp-mood-icon">🧠</span>
+          <strong>Kafamı dağıtmak istiyorum</strong>
+          <span>Biraz hareket edelim.</span>
+        </button>
+
+        <button class="bp-mood" onclick="bpMood(this,'uzak')">
+          <span class="bp-mood-icon">🌙</span>
+          <strong>Biraz uzaklaşmak istiyorum</strong>
+          <span>Kalabalıktan uzaklaşalım.</span>
+        </button>
+
+      </div>
+
+      <div class="bp-mood-result" id="bpMoodResult"></div>
 
     </div>
 
+  </section>
 
-    <!-- ANA SAYFA -->
 
-    <section class="screen active" id="home">
+  <!-- 2. BUGÜN SENİ NE MUTLU EDER -->
 
-        <div class="home-card">
+  <section class="bp-section">
 
-            <div class="icon">🌷</div>
-
-            <div class="eyebrow">
-                KİŞİSEL DOSYA
-            </div>
-
-            <h1>
-                Biraz seni tanıyalım.
-            </h1>
-
-            <p class="home-description">
-
-                Bu küçük dosyanın amacı seni çözmek değil.
-                Seni, kendi anlattığın şekilde biraz daha tanımak.
-
-            </p>
-
-            <div class="notice">
-
-                Doğru veya yanlış cevap yok.
-                <br>
-                İçinden geldiği gibi cevapla.
-
-            </div>
-
-            <button class="primary-btn" onclick="startApp()">
-                DOSYAYI OLUŞTUR
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- 1 -->
-
-    <section class="screen" id="page1">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                01 / 07
-            </div>
-
-            <div class="question-title">
-                Önce seni biraz tanıyalım.
-            </div>
-
-            <div class="question-sub">
-                Basit sorularla başlayalım.
-            </div>
-
-            <div class="field">
-
-                <label>
-                    Sana nasıl hitap edilmesini seversin?
-                </label>
-
-                <input
-                    id="hitap"
-                    type="text"
-                    placeholder="Örneğin: Öykü, Öykücüm, ismimle..."
-                >
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    Seni en iyi anlatan 3 kelime?
-                </label>
-
-                <input
-                    id="kelimeler"
-                    type="text"
-                    placeholder="Örneğin: sakin, eğlenceli, meraklı"
-                >
-
-            </div>
-
-            <div class="field">
-
-                <label>
-                    Şu sıralar seni en çok anlatan şarkı?
-                </label>
-
-                <input
-                    id="sarki"
-                    type="text"
-                    placeholder="Şarkı adı / sanatçı"
-                >
-
-            </div>
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="goHome()">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="nextPage(2)">
-                    Devam Et
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 2 -->
-
-    <section class="screen" id="page2">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                02 / 07
-            </div>
-
-            <div class="question-title">
-                Küçük tercihler.
-            </div>
-
-            <div class="question-sub">
-                Çok düşünme. İlk hangisi içinden geliyorsa onu seç.
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    ☕ İçecek?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="icecek"
-                        onclick="selectChoice(this,'icecek','Kahve')">
-
-                        <div class="choice-icon">
-                            ☕
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Kahve
-                            </strong>
-
-                            <span>
-                                Bir kahvenin bahanesi çoktur.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="icecek"
-                        onclick="selectChoice(this,'icecek','Çay')">
-
-                        <div class="choice-icon">
-                            🍵
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Çay
-                            </strong>
-
-                            <span>
-                                Sohbetin yanında iyi gider.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🌿 Boş bir akşam?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="aktivite"
-                        onclick="selectChoice(this,'aktivite','Yürüyüş')">
-
-                        <div class="choice-icon">
-                            🚶‍♀️
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Yürüyüş
-                            </strong>
-
-                            <span>
-                                Biraz hava, biraz sohbet.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="aktivite"
-                        onclick="selectChoice(this,'aktivite','Uzun sohbet')">
-
-                        <div class="choice-icon">
-                            💬
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Uzun sohbet
-                            </strong>
-
-                            <span>
-                                Saatin nasıl geçtiğini anlamamak.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🌙 Hangi saatler?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="zaman"
-                        onclick="selectChoice(this,'zaman','Gece')">
-
-                        <div class="choice-icon">
-                            🌙
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Gece
-                            </strong>
-
-                            <span>
-                                Gece sohbetlerinin ayrı bir havası var.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="zaman"
-                        onclick="selectChoice(this,'zaman','Gündüz')">
-
-                        <div class="choice-icon">
-                            ☀️
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Gündüz
-                            </strong>
-
-                            <span>
-                                Günün enerjisini seviyorum.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="showPage(1)">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="nextPage(3)">
-                    Devam Et
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 3 -->
-
-    <section class="screen" id="page3">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                03 / 07
-            </div>
-
-            <div class="question-title">
-                Biraz daha detay.
-            </div>
-
-            <div class="question-sub">
-                Şimdi seçenekleri biraz çeşitlendirelim.
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🌊 Hangisi?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="mekan"
-                        onclick="selectChoice(this,'mekan','Deniz')">
-
-                        <div class="choice-icon">
-                            🌊
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Deniz
-                            </strong>
-
-                            <span>
-                                Sahil, dalga sesi, biraz huzur.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="mekan"
-                        onclick="selectChoice(this,'mekan','Doğa')">
-
-                        <div class="choice-icon">
-                            🌲
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Doğa
-                            </strong>
-
-                            <span>
-                                Yeşillik, sakinlik ve temiz hava.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🍰 Hangisi?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="tat"
-                        onclick="selectChoice(this,'tat','Tatlı')">
-
-                        <div class="choice-icon">
-                            🍰
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Tatlı
-                            </strong>
-
-                            <span>
-                                Hayat biraz tatlı olsun.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="tat"
-                        onclick="selectChoice(this,'tat','Tuzlu')">
-
-                        <div class="choice-icon">
-                            🍟
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Tuzlu
-                            </strong>
-
-                            <span>
-                                Tatlıdan önce tuzlu.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🎬 Boş zaman?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="ekran"
-                        onclick="selectChoice(this,'ekran','Film')">
-
-                        <div class="choice-icon">
-                            🎬
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Film
-                            </strong>
-
-                            <span>
-                                Tek oturuşta bir hikâye.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="ekran"
-                        onclick="selectChoice(this,'ekran','Dizi')">
-
-                        <div class="choice-icon">
-                            📺
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Dizi
-                            </strong>
-
-                            <span>
-                                Bölüm bitince bir tane daha.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="showPage(2)">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="nextPage(4)">
-                    Devam Et
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 4 -->
-
-    <section class="screen" id="page4">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                04 / 07
-            </div>
-
-            <div class="question-title">
-                Planlar nasıl?
-            </div>
-
-            <div class="question-sub">
-                Küçük tercihler bazen çok şey anlatır.
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🎲 Plan konusunda hangisisin?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="plan"
-                        onclick="selectChoice(this,'plan','Spontane')">
-
-                        <div class="choice-icon">
-                            🎲
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Spontane
-                            </strong>
-
-                            <span>
-                                O an ne gelirse.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="plan"
-                        onclick="selectChoice(this,'plan','Önceden plan')">
-
-                        <div class="choice-icon">
-                            📅
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Önceden plan
-                            </strong>
-
-                            <span>
-                                Ne yapacağımız belli olsun.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    📱 İletişim?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="iletisim"
-                        onclick="selectChoice(this,'iletisim','Mesajlaşmak')">
-
-                        <div class="choice-icon">
-                            💬
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Mesajlaşmak
-                            </strong>
-
-                            <span>
-                                Mesajla anlatmak daha kolay.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="iletisim"
-                        onclick="selectChoice(this,'iletisim','Aramak')">
-
-                        <div class="choice-icon">
-                            📞
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Aramak
-                            </strong>
-
-                            <span>
-                                Sesini duymak daha güzel.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🌅 Hangisi daha güzel?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="gun"
-                        onclick="selectChoice(this,'gun','Gün doğumu')">
-
-                        <div class="choice-icon">
-                            🌅
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Gün doğumu
-                            </strong>
-
-                            <span>
-                                Yeni bir gün hissi.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="gun"
-                        onclick="selectChoice(this,'gun','Gün batımı')">
-
-                        <div class="choice-icon">
-                            🌇
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Gün batımı
-                            </strong>
-
-                            <span>
-                                Günün en güzel tarafı.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="showPage(3)">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="nextPage(5)">
-                    Devam Et
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 5 -->
-
-    <section class="screen" id="page5">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                05 / 07
-            </div>
-
-            <div class="question-title">
-                Bir günün nasıl olsun?
-            </div>
-
-            <div class="question-sub">
-                Biraz hayal, biraz gerçek.
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🏖️ Tatil denince?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="tatil"
-                        onclick="selectChoice(this,'tatil','Deniz tatili')">
-
-                        <div class="choice-icon">
-                            🌊
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Deniz tatili
-                            </strong>
-
-                            <span>
-                                Güneş, deniz ve kafa dinlemek.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="tatil"
-                        onclick="selectChoice(this,'tatil','Doğa tatili')">
-
-                        <div class="choice-icon">
-                            🌲
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Doğa tatili
-                            </strong>
-
-                            <span>
-                                Sakinlik ve biraz uzaklaşmak.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="tatil"
-                        onclick="selectChoice(this,'tatil','Şehir gezisi')">
-
-                        <div class="choice-icon">
-                            🏙️
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Şehir gezisi
-                            </strong>
-
-                            <span>
-                                Yeni yerler görmek, keşfetmek.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="tatil"
-                        onclick="selectChoice(this,'tatil','Evde sakinlik')">
-
-                        <div class="choice-icon">
-                            🏠
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Evde sakinlik
-                            </strong>
-
-                            <span>
-                                Bazen en güzel plan hiçbir plan yapmamaktır.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🍽️ Akşam planı?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="aksam"
-                        onclick="selectChoice(this,'aksam','Güzel bir yemek')">
-
-                        <div class="choice-icon">
-                            🍽️
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Güzel bir yemek
-                            </strong>
-
-                            <span>
-                                Güzel yemek + güzel sohbet.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="aksam"
-                        onclick="selectChoice(this,'aksam','Kahve ve tatlı')">
-
-                        <div class="choice-icon">
-                            ☕
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Kahve + tatlı
-                            </strong>
-
-                            <span>
-                                Fazla plana gerek yok.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="aksam"
-                        onclick="selectChoice(this,'aksam','Sokak lezzetleri')">
-
-                        <div class="choice-icon">
-                            🌮
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Sokak lezzetleri
-                            </strong>
-
-                            <span>
-                                Gezerken bir şeyler keşfetmek.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="aksam"
-                        onclick="selectChoice(this,'aksam','Evde film')">
-
-                        <div class="choice-icon">
-                            🎬
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Evde film
-                            </strong>
-
-                            <span>
-                                Rahat bir akşam.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🎁 Hangisi daha anlamlı?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="jest"
-                        onclick="selectChoice(this,'jest','Küçük bir sürpriz')">
-
-                        <div class="choice-icon">
-                            🎁
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Küçük bir sürpriz
-                            </strong>
-
-                            <span>
-                                Beklenmedik ama düşünülmüş.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="jest"
-                        onclick="selectChoice(this,'jest','Güzel bir mesaj')">
-
-                        <div class="choice-icon">
-                            💌
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Güzel bir mesaj
-                            </strong>
-
-                            <span>
-                                Bazen birkaç kelime yeter.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="jest"
-                        onclick="selectChoice(this,'jest','Birlikte geçirilen zaman')">
-
-                        <div class="choice-icon">
-                            🫶
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Birlikte geçirilen zaman
-                            </strong>
-
-                            <span>
-                                Asıl mesele zaman ayırmak.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="jest"
-                        onclick="selectChoice(this,'jest','Düşünülmüş küçük bir detay')">
-
-                        <div class="choice-icon">
-                            🌷
-                        </div>
-
-                        <div class="choice-text">
-
-                            <strong>
-                                Düşünülmüş küçük bir detay
-                            </strong>
-
-                            <span>
-                                Küçük ama kişisel bir şey.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="showPage(4)">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="nextPage(6)">
-                    Devam Et
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 6 -->
-
-    <section class="screen" id="page6">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                06 / 07
-            </div>
-
-            <div class="question-title">
-                Biraz daha sen.
-            </div>
-
-            <div class="question-sub">
-                Burada cevapların seni biraz daha anlatıyor.
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    ❤️ Birisiyle yakınlaşırken senin için en önemli şey?
-                </label>
-
-                <div class="choices">
-
-                    <div
-                        class="choice"
-                        data-group="yakinlik"
-                        onclick="selectChoice(this,'yakinlik','Güven')">
-
-                        <div class="choice-icon">🤝</div>
-
-                        <div class="choice-text">
-                            <strong>Güven</strong>
-                            <span>Yanında rahat hissedebilmek.</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="yakinlik"
-                        onclick="selectChoice(this,'yakinlik','Samimiyet')">
-
-                        <div class="choice-icon">❤️</div>
-
-                        <div class="choice-text">
-                            <strong>Samimiyet</strong>
-                            <span>Olduğun gibi olabilmek.</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="yakinlik"
-                        onclick="selectChoice(this,'yakinlik','Mizah')">
-
-                        <div class="choice-icon">😂</div>
-
-                        <div class="choice-text">
-                            <strong>Mizah</strong>
-                            <span>Birlikte gülebilmek.</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="yakinlik"
-                        onclick="selectChoice(this,'yakinlik','İletişim')">
-
-                        <div class="choice-icon">💬</div>
-
-                        <div class="choice-text">
-                            <strong>İletişim</strong>
-                            <span>Konuşabilmek ve anlaşabilmek.</span>
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="choice"
-                        data-group="yakinlik"
-                        onclick="selectChoice(this,'yakinlik','Saygı')">
-
-                        <div class="choice-icon">🌿</div>
-
-                        <div class="choice-text">
-                            <strong>Saygı</strong>
-                            <span>Birbirinin alanına değer vermek.</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    😊 Seni en kolay ne güldürür?
-                </label>
-
-                <textarea
-                    id="gulduren"
-                    placeholder="Bir insan, bir durum, saçma bir şey bile olabilir..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🧠 İnsanların sende genelde yanlış anladığı bir şey var mı?
-                </label>
-
-                <textarea
-                    id="yanlisAnlasilan"
-                    placeholder="Varsa anlatabilirsin..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🌸 Seni gerçekten değerli hissettiren şey nedir?
-                </label>
-
-                <textarea
-                    id="degerliHissettiren"
-                    placeholder="Küçük bir davranış bile olabilir."
-                ></textarea>
-
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="showPage(5)">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="nextPage(7)">
-                    Devam Et
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 7 -->
-
-    <section class="screen" id="page7">
-
-        <div class="question-card">
-
-            <div class="question-number">
-                07 / 07
-            </div>
-
-            <div class="question-title">
-                Son birkaç şey.
-            </div>
-
-            <div class="question-sub">
-                Bu bölüm tamamen sana kalmış.
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    😊 Seni en kolay ne mutlu eder?
-                </label>
-
-                <textarea
-                    id="mutlu"
-                    placeholder="Küçük bir şey bile olabilir..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    ❤️ Bir insanda en çok neye değer verirsin?
-                </label>
-
-                <textarea
-                    id="deger"
-                    placeholder="Samimiyet, güven, anlayış..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🚫 Seni bir insandan en hızlı soğutan şey nedir?
-                </label>
-
-                <textarea
-                    id="sogutan"
-                    placeholder="Bir davranış, bir tavır..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    ☕ Birlikte yapmak istediğin küçük bir şey var mı?
-                </label>
-
-                <textarea
-                    id="birlikte"
-                    placeholder="Çok büyük bir şey olmasına gerek yok."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    🌷 İdeal bir boş günün nasıl geçer?
-                </label>
-
-                <textarea
-                    id="bosGun"
-                    placeholder="Sabahından akşamına kadar nasıl olurdu?"
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    💭 Eklemek istediğin başka bir şey?
-                </label>
-
-                <textarea
-                    id="ekstra"
-                    placeholder="Burayı tamamen sana bırakıyorum."
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    ✨ Benim bilmemi istediğin ama sana doğrudan sormadığım bir şey var mı?
-                </label>
-
-                <textarea
-                    id="ozel"
-                    placeholder="İstersen anlat..."
-                ></textarea>
-
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="secondary-btn"
-                    onclick="showPage(6)">
-                    Geri
-                </button>
-
-                <button
-                    class="primary-btn"
-                    onclick="finish()">
-                    DOSYAYI TAMAMLA
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TAMAMLANDI -->
-
-    <section class="screen" id="complete">
-
-        <div class="complete-card">
-
-            <div class="check">
-                ✓
-            </div>
-
-            <h2>
-                Teşekkürler Öykü.
-            </h2>
-
-            <p>
-                Dosya tamamlandı.
-            </p>
-
-
-            <div class="final-message">
-
-                Bir insanı tanımak sadece sorularla olmuyor.
-
-                <br><br>
-
-                Biraz sohbet.
-                <br>
-                Birkaç yürüyüş.
-                <br>
-                Birkaç kahve.
-                <br>
-                Birkaç güzel anı.
-
-                <br><br>
-
-                Gerisini zaten zaman gösterir.
-
-            </div>
-
-
-            <button
-                class="whatsapp-btn"
-                onclick="sendWhatsApp()">
-
-                💬 CEVAPLARIMI GÖNDER
-
-            </button>
-
-
-            <div style="margin-top:12px;">
-
-                <button
-                    class="secondary-btn"
-                    onclick="goHome()">
-
-                    ANA SAYFA
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <div class="footer">
-        küçük bir dosya, biraz merak, bolca sohbet.
+    <div class="bp-section-head">
+      <div>
+        <h2 class="bp-section-title">💛 Bugün seni ne mutlu eder?</h2>
+        <p class="bp-section-desc">
+          Büyük bir şey olmak zorunda değil. Küçük bir detay da yeter.
+        </p>
+      </div>
     </div>
 
-</div>
+    <div class="bp-happy-grid">
+
+      <div class="bp-happy" onclick="bpHappy('cay')">
+        <div class="bp-happy-icon">☕</div>
+        <strong>Çay + uzun sohbet</strong>
+        <small>
+          Acele etmeden oturup saatlerce konuşalım.
+        </small>
+      </div>
+
+      <div class="bp-happy" onclick="bpHappy('sessiz')">
+        <div class="bp-happy-icon">🌿</div>
+        <strong>Sessiz sakin bir yer</strong>
+        <small>
+          Biraz uzak, ama çok da uzak olmayan bir yer.
+        </small>
+      </div>
+
+      <div class="bp-happy" onclick="bpHappy('deniz')">
+        <div class="bp-happy-icon">🌊</div>
+        <strong>Deniz havası</strong>
+        <small>
+          Deniz kenarında biraz dolaşmak ve kafayı boşaltmak.
+        </small>
+      </div>
 
+      <div class="bp-happy" onclick="bpHappy('hediye')">
+        <div class="bp-happy-icon">🎁</div>
+        <strong>Küçük bir sürpriz</strong>
+        <small>
+          Düşünülmüş, seni anlatan küçük bir detay.
+        </small>
+      </div>
 
-<script>
+      <div class="bp-happy" onclick="bpHappy('yemek')">
+        <div class="bp-happy-icon">🍽️</div>
+        <strong>Güzel bir yemek</strong>
+        <small>
+          Güzel bir akşam, güzel bir yemek, güzel bir sohbet.
+        </small>
+      </div>
 
-/* =====================================================
-   WHATSAPP NUMARASI
+      <div class="bp-happy" onclick="bpHappy('uzaklas')">
+        <div class="bp-happy-icon">🚗</div>
+        <strong>Biraz uzaklaşmak</strong>
+        <small>
+          Arabaya binip sessiz bir yere doğru gidelim.
+        </small>
+      </div>
 
-   0533 451 38 93
-   ↓
-   905334513893
-   ===================================================== */
+    </div>
 
-const WHATSAPP_NUMBER = "905334513893";
+  </section>
 
 
-let answers = {
+  <!-- 3. BİR GÜN KAÇALIM -->
 
-    hitap:"",
-    kelimeler:"",
-    sarki:"",
+  <section class="bp-section">
 
-    icecek:"",
-    aktivite:"",
-    zaman:"",
+    <div class="bp-section-head">
+      <div>
+        <h2 class="bp-section-title">🗺️ Bir gün kaçalım</h2>
+        <p class="bp-section-desc">
+          Bazen plan sadece “hadi gidelim” demektir.
+        </p>
+      </div>
+    </div>
 
-    mekan:"",
-    tat:"",
-    ekran:"",
+    <div class="bp-escape">
+
+      <div class="bp-map">
 
-    plan:"",
-    iletisim:"",
-    gun:"",
+        <div class="bp-map-line"></div>
+
+        <button class="bp-pin pin1" onclick="bpDestination('Sessiz Bir Koy','Deniz kenarında, sakin ve mümkün olduğunca kalabalıktan uzak bir gün.')">
+          🌊
+        </button>
+
+        <button class="bp-pin pin2" onclick="bpDestination('Doğanın İçinde','Telefonları biraz kenara bırakıp doğanın içinde sakin bir gün.')">
+          🌿
+        </button>
+
+        <button class="bp-pin pin3" onclick="bpDestination('Küçük Bir Kaçamak','Arabaya binip fazla düşünmeden biraz uzaklaşacağımız bir rota.')">
+          🚗
+        </button>
+
+        <button class="bp-pin pin4" onclick="bpDestination('Gün Batımı Noktası','Gün batımını izleyip uzun uzun konuşacağımız bir akşam.')">
+          🌅
+        </button>
+
+        <button class="bp-pin pin5" onclick="bpDestination('Sessiz Bir Yer','Kimsenin konuşmadığı, sadece bizim olduğumuz sakin bir yer.')">
+          🌙
+        </button>
+
+      </div>
+
+      <div class="bp-escape-info">
+
+        <div class="bp-eyebrow">KAÇAMAK PLANI</div>
+
+        <h3>Bir gün her şeyi bırakıp gidelim.</h3>
+
+        <p>
+          Önceden her şeyi planlamak zorunda değiliz.
+          Bir gün arabaya binip biraz uzaklaşalım,
+          güzel bir yerde oturalım, çay içelim ve
+          günün nasıl geçtiğini bile unutalım.
+        </p>
+
+        <button
+          class="bp-main-btn"
+          onclick="bpRandomEscape()">
+          🎲 Sen seç
+        </button>
+
+        <div class="bp-destination" id="bpDestination"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+ 
+
+
+  <!-- AKTİVİTELER -->
+
+  <section class="bp-section">
+
+    <div class="bp-section-head">
+      <div>
+        <h2 class="bp-section-title">🎯 Peki bugün ne yapıyoruz?</h2>
+        <p class="bp-section-desc">
+          Karar veremiyorsan rastgele de seçebiliriz.
+        </p>
+      </div>
+
+      <button class="bp-main-btn" onclick="bpRandomPlan()">
+        🎲 Ben seçeyim
+      </button>
+    </div>
+
+    <div class="bp-activities">
+
+      <div class="bp-activity" onclick="bpOpenActivity('sahil')">
+        <div class="bp-activity-icon">🌊</div>
+        <strong>Sahil</strong>
+        <span>Deniz havası alıp biraz yürüyelim.</span>
+      </div>
+
+      <div class="bp-activity" onclick="bpOpenActivity('yuruyus')">
+        <div class="bp-activity-icon">🚶</div>
+        <strong>Yürüyüş</strong>
+        <span>Biraz yürüyelim, biraz konuşalım.</span>
+      </div>
+
+      <div class="bp-activity" onclick="bpOpenActivity('kahve')">
+        <div class="bp-activity-icon">☕</div>
+        <strong>Çay / Kahve</strong>
+        <span>Oturup uzun uzun konuşalım.</span>
+      </div>
+
+      <div class="bp-activity" onclick="bpOpenActivity('yemek')">
+        <div class="bp-activity-icon">🍽️</div>
+        <strong>Güzel Yemek</strong>
+        <span>Akşamı güzel bir yemekle kapatalım.</span>
+      </div>
+
+      <div class="bp-activity" onclick="bpOpenActivity('araba')">
+        <div class="bp-activity-icon">🚗</div>
+        <strong>Araba</strong>
+        <span>Biraz uzaklaşalım, müziği açalım.</span>
+      </div>
 
-    tatil:"",
-    aksam:"",
-    jest:"",
+      <div class="bp-activity" onclick="bpOpenActivity('film')">
+        <div class="bp-activity-icon">🎬</div>
+        <strong>Dizi / Film</strong>
+        <span>Evde sakin bir akşam.</span>
+      </div>
 
-    yakinlik:"",
+      <div class="bp-activity" onclick="bpOpenActivity('gece')">
+        <div class="bp-activity-icon">🌙</div>
+        <strong>Gece Gezmesi</strong>
+        <span>Biraz dolaşıp geceyi yaşayalım.</span>
+      </div>
 
-    gulduren:"",
-    yanlisAnlasilan:"",
-    degerliHissettiren:"",
+      <div class="bp-activity" onclick="bpOpenActivity('hicbirsey')">
+        <div class="bp-activity-icon">🛋️</div>
+        <strong>Hiçbir Şey</strong>
+        <span>Hiçbir şey yapmak zorunda değiliz.</span>
+      </div>
 
-    mutlu:"",
-    deger:"",
-    sogutan:"",
-    birlikte:"",
-    bosGun:"",
-    ekstra:"",
-    ozel:""
+      <div class="bp-activity" onclick="bpOpenActivity('bisiklet')">
+        <div class="bp-activity-icon">🚲</div>
+        <strong>Bisiklet</strong>
+        <span>Biraz hareket, biraz hava.</span>
+      </div>
 
-};
+      <div class="bp-activity" onclick="bpOpenActivity('balik')">
+        <div class="bp-activity-icon">🎣</div>
+        <strong>Balık</strong>
+        <span>Sakin bir yerde oturalım.</span>
+      </div>
 
+      <div class="bp-activity" onclick="bpOpenActivity('gunbatimi')">
+        <div class="bp-activity-icon">🌅</div>
+        <strong>Gün Batımı</strong>
+        <span>Günü beraber kapatalım.</span>
+      </div>
 
-/* EKRAN */
+      <div class="bp-activity" onclick="bpOpenActivity('dondurma')">
+        <div class="bp-activity-icon">🍦</div>
+        <strong>Dondurma</strong>
+        <span>Küçük ama güzel bir kaçamak.</span>
+      </div>
 
-function hideAll(){
+      <div class="bp-activity" onclick="bpOpenActivity('park')">
+        <div class="bp-activity-icon">🌳</div>
+        <strong>Park</strong>
+        <span>Sakin bir yerde oturalım.</span>
+      </div>
 
-    document.querySelectorAll(".screen").forEach(screen=>{
-        screen.classList.remove("active");
-    });
+      <div class="bp-activity" onclick="bpOpenActivity('fotograf')">
+        <div class="bp-activity-icon">📸</div>
+        <strong>Fotoğraf</strong>
+        <span>Bugünden küçük bir anı bırakalım.</span>
+      </div>
 
-}
+      <div class="bp-activity" onclick="bpOpenActivity('yildiz')">
+        <div class="bp-activity-icon">🌌</div>
+        <strong>Yıldızları İzlemek</strong>
+        <span>Sessiz bir yerde gökyüzünü izleyelim.</span>
+      </div>
 
+      <div class="bp-activity" onclick="bpOpenActivity('gezme')">
+        <div class="bp-activity-icon">🛍️</div>
+        <strong>Gezme</strong>
+        <span>Nereye gittiğimiz belli olmayan bir gün.</span>
+      </div>
 
-function show(id){
+      <div class="bp-activity" onclick="bpOpenActivity('atistirmalik')">
+        <div class="bp-activity-icon">🍿</div>
+        <strong>Atıştırmalık</strong>
+        <span>Bir şeyler alıp oturalım.</span>
+      </div>
 
-    hideAll();
+    </div>
 
-    document.getElementById(id).classList.add("active");
+  </section>
 
-}
 
+  <!-- FOOTER -->
 
-function goHome(){
+  <div class="bp-footer">
+    Bu site bizim. Başkasına gösterilmesi yasaktır. ♡
+  </div>
 
-    document
-        .getElementById("progressWrap")
-        .style.display="none";
 
-    show("home");
+  <!-- ACTIVITY MODAL -->
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+  <div class="bp-overlay" id="bpActivityModal">
 
-}
+    <div class="bp-modal">
 
+      <div class="bp-modal-icon" id="bpModalIcon">♡</div>
 
-/* BAŞLA */
+      <h3 id="bpModalTitle">Bugünün planı</h3>
 
-function startApp(){
+      <p id="bpModalText"></p>
 
-    document
-        .getElementById("progressWrap")
-        .style.display="block";
+      <div class="bp-modal-actions">
 
-    showPage(1);
+        <button
+          class="bp-main-btn"
+          onclick="bpSendActivity()">
+          💚 Bunu yapalım
+        </button>
 
-}
+        <button
+          class="bp-close-btn"
+          onclick="bpCloseActivity()">
+          Vazgeç
+        </button>
+
+      </div>
 
+    </div>
+
+  </div>
+
 
-/* SAYFA */
+  <!-- TOAST -->
+
+  <div class="bp-toast" id="bpToast"></div>
+
+
+  <script>
+
+    /* =====================================================
+       WHATSAPP
+    ===================================================== */
+
+    const BP_WHATSAPP =
+      "905334513893";
+
+
+    /* =====================================================
+       AKTİVİTELER
+    ===================================================== */
+
+    const BP_ACTIVITIES = {
+
+      sahil:{
+        icon:"🌊",
+        title:"Sahil",
+        text:"Bugün deniz havası alıp biraz yürüyelim."
+      },
+
+      yuruyus:{
+        icon:"🚶",
+        title:"Yürüyüş",
+        text:"Biraz yürüyelim, biraz konuşalım. Acelemiz yok."
+      },
+
+      kahve:{
+        icon:"☕",
+        title:"Çay / Kahve",
+        text:"Çayımızı alıp uzun uzun konuşalım."
+      },
 
-function showPage(number){
+      yemek:{
+        icon:"🍽️",
+        title:"Güzel Bir Yemek",
+        text:"Bugün güzel bir yemek yiyip akşamı keyifle geçirelim."
+      },
 
-    show("page"+number);
+      araba:{
+        icon:"🚗",
+        title:"Biraz Uzaklaşalım",
+        text:"Arabaya binelim, müziği açalım ve biraz uzaklaşalım."
+      },
 
-    updateProgress(number);
+      film:{
+        icon:"🎬",
+        title:"Dizi / Film",
+        text:"Bugün hiçbir yere gitmeyip sakin bir akşam yapalım."
+      },
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+      gece:{
+        icon:"🌙",
+        title:"Gece Gezmesi",
+        text:"Biraz dolaşalım, sonra güzel bir yerde oturalım."
+      },
 
-}
+      hicbirsey:{
+        icon:"🛋️",
+        title:"Hiçbir Şey",
+        text:"Bugün hiçbir şey yapmak zorunda değiliz. Yan yana olmak yeter."
+      },
 
+      bisiklet:{
+        icon:"🚲",
+        title:"Bisiklet",
+        text:"Biraz hareket edelim ve hava alalım."
+      },
 
-function updateProgress(page){
+      balik:{
+        icon:"🎣",
+        title:"Balık",
+        text:"Sakin bir yerde oturup biraz kafamızı dinleyelim."
+      },
 
-    const total=7;
+      gunbatimi:{
+        icon:"🌅",
+        title:"Gün Batımı",
+        text:"Günü beraber, güzel bir gün batımıyla kapatalım."
+      },
 
-    const percent=Math.round(
-        (page/total)*100
-    );
+      dondurma:{
+        icon:"🍦",
+        title:"Dondurma",
+        text:"Küçük bir dondurma kaçamağı yapalım."
+      },
 
-    document.getElementById("progressText").innerText=
-        page+" / "+total;
+      park:{
+        icon:"🌳",
+        title:"Park",
+        text:"Sakin bir yerde oturup biraz konuşalım."
+      },
 
-    document.getElementById("progressPercent").innerText=
-        "%"+percent;
+      fotograf:{
+        icon:"📸",
+        title:"Fotoğraf",
+        text:"Bugünden güzel bir anı bırakalım."
+      },
 
-    document.getElementById("progressBar").style.width=
-        percent+"%";
+      yildiz:{
+        icon:"🌌",
+        title:"Yıldızları İzlemek",
+        text:"Sessiz bir yere gidip gökyüzünü izleyelim."
+      },
 
-}
+      gezme:{
+        icon:"🛍️",
+        title:"Gezme",
+        text:"Nereye gittiğimiz belli olmayan küçük bir keşif yapalım."
+      },
 
+      atistirmalik:{
+        icon:"🍿",
+        title:"Atıştırmalık",
+        text:"Bir şeyler alıp sakin bir yere geçelim."
+      }
 
-/* INPUTLARI TOPLA */
+    };
 
-function collectInputs(){
 
-    const ids = [
+    let BP_SELECTED_ACTIVITY = null;
 
-        "hitap",
-        "kelimeler",
-        "sarki",
 
-        "gulduren",
-        "yanlisAnlasilan",
-        "degerliHissettiren",
+    /* =====================================================
+       MOD SEÇİMİ
+    ===================================================== */
 
-        "mutlu",
-        "deger",
-        "sogutan",
-        "birlikte",
-        "bosGun",
-        "ekstra",
-        "ozel"
+    function bpMood(button,mood){
 
-    ];
+      document
+        .querySelectorAll("#bizimPlan .bp-mood")
+        .forEach(x => x.classList.remove("active"));
 
+      button.classList.add("active");
 
-    ids.forEach(id=>{
+      const result =
+        document.getElementById("bpMoodResult");
 
-        const element =
-            document.getElementById(id);
+      let data = {};
 
-        if(element){
+      if(mood === "sakin"){
 
-            answers[id] =
-                element.value.trim();
+        data = {
+          title:"🌿 Bugün sakinlik iyi gelebilir.",
+          text:"Çok fazla plan yapmayalım. Çay, sessiz bir yer ve uzun bir sohbet bugün için yeterli.",
+          activities:["kahve","park","hicbirsey","yildiz"]
+        };
 
+      }
+
+      if(mood === "sohbet"){
+
+        data = {
+          title:"💬 Bugün konuşmalık bir gün.",
+          text:"Bir yere oturalım, çayımızı alalım ve acelemiz yokmuş gibi konuşalım.",
+          activities:["kahve","yemek","yuruyus","atistirmalik"]
+        };
+
+      }
+
+      if(mood === "kafa"){
+
+        data = {
+          title:"🧠 O zaman biraz kafayı dağıtalım.",
+          text:"Evde oturmak yerine biraz hareket, biraz yol ve biraz spontane karar.",
+          activities:["araba","bisiklet","dondurma","fotograf"]
+        };
+
+      }
+
+      if(mood === "uzak"){
+
+        data = {
+          title:"🌙 Biraz uzaklaşmak serbest.",
+          text:"Kalabalıktan uzak, mümkünse sessiz ve sakin bir yere gidelim.",
+          activities:["araba","gunbatimi","yildiz","balik"]
+        };
+
+      }
+
+      let buttons = "";
+
+      data.activities.forEach(key => {
+
+        const item = BP_ACTIVITIES[key];
+
+        buttons += `
+          <button
+            class="bp-mini-btn"
+            onclick="bpOpenActivity('${key}')">
+            ${item.icon} ${item.title}
+          </button>
+        `;
+
+      });
+
+      result.innerHTML = `
+        <div class="bp-result-title">
+          ${data.title}
+        </div>
+
+        <div class="bp-result-text">
+          ${data.text}
+        </div>
+
+        <div class="bp-mini-actions">
+          ${buttons}
+        </div>
+      `;
+
+      result.classList.add("show");
+    }
+
+
+    /* =====================================================
+       BUGÜN SENİ NE MUTLU EDER
+    ===================================================== */
+
+    function bpHappy(type){
+
+      const messages = {
+
+        cay:{
+          title:"☕ Çay + uzun sohbet",
+          text:"Bence bugün başka bir şeye gerek yok. Çaylarımızı alalım ve uzun uzun konuşalım.",
+          activity:"kahve"
+        },
+
+        sessiz:{
+          title:"🌿 Sessiz bir yer",
+          text:"Biraz uzak ama çok da uzak olmayan bir yer bulalım. Sadece oturalım.",
+          activity:"park"
+        },
+
+        deniz:{
+          title:"🌊 Deniz havası",
+          text:"Deniz kenarında biraz yürüyelim. Belki günün en güzel kısmı olur.",
+          activity:"sahil"
+        },
+
+        hediye:{
+          title:"🎁 Küçük bir detay",
+          text:"Büyük bir şey değil. Sadece seni anlatan, düşünülmüş küçük bir şey.",
+          activity:"fotograf"
+        },
+
+        yemek:{
+          title:"🍽️ Güzel bir yemek",
+          text:"O zaman akşamı güzel bir yemek ve uzun bir sohbetle yapalım.",
+          activity:"yemek"
+        },
+
+        uzaklas:{
+          title:"🚗 Biraz uzaklaşalım",
+          text:"Nereye gittiğimizi çok düşünmeden arabaya binip biraz uzaklaşalım.",
+          activity:"araba"
         }
 
-    });
+      };
 
-}
+      const data = messages[type];
 
-
-/* SEÇİM */
-
-function selectChoice(
-    element,
-    group,
-    value
-){
-
-    document
-        .querySelectorAll(
-            '.choice[data-group="'+group+'"]'
-        )
-        .forEach(item=>{
-            item.classList.remove("selected");
-        });
-
-
-    element.classList.add("selected");
-
-
-    answers[group]=value;
-
-}
-
-
-/* DEVAM */
-
-function nextPage(page){
-
-    collectInputs();
-
-    showPage(page);
-
-}
-
-
-/* TAMAMLA */
-
-function finish(){
-
-    collectInputs();
-
-    document
-        .getElementById("progressWrap")
-        .style.display="none";
-
-    show("complete");
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* BOŞ CEVAP */
-
-function clean(text){
-
-    if(!text || !text.trim()){
-
-        return "Belirtilmedi";
-
+      bpOpenActivity(
+        data.activity,
+        data.title,
+        data.text
+      );
     }
 
-    return text.trim();
 
-}
+    /* =====================================================
+       BİR GÜN KAÇALIM
+    ===================================================== */
 
+    function bpDestination(title,text){
 
-/* WHATSAPP MESAJI */
+      const box =
+        document.getElementById("bpDestination");
 
-function sendWhatsApp(){
+      box.innerHTML = `
+        <strong>📍 ${title}</strong>
+        <span>${text}</span>
+      `;
 
-    collectInputs();
-
-
-    const message = `🌷 ÖYKÜ DOSYASI — TAMAMLANDI
-
-Merhaba :)
-
-Dosyayı tamamladım. Cevaplarım şöyle:
-
-━━━━━━━━━━━━━━━━━━
-
-👤 NASIL HİTAP EDİLMELİ?
-${clean(answers.hitap)}
-
-✨ BENİ ANLATAN 3 KELİME
-${clean(answers.kelimeler)}
-
-🎵 ŞU SIRALAR BENİ ANLATAN ŞARKI
-${clean(answers.sarki)}
-
-━━━━━━━━━━━━━━━━━━
-
-☕ İÇECEK
-${clean(answers.icecek)}
-
-🌿 BOŞ BİR AKŞAM
-${clean(answers.aktivite)}
-
-🌙 ZAMAN
-${clean(answers.zaman)}
-
-🌊 DENİZ / DOĞA
-${clean(answers.mekan)}
-
-🍰 TATLI / TUZLU
-${clean(answers.tat)}
-
-🎬 FİLM / DİZİ
-${clean(answers.ekran)}
-
-🎲 PLAN
-${clean(answers.plan)}
-
-📱 İLETİŞİM
-${clean(answers.iletisim)}
-
-🌅 GÜN DOĞUMU / GÜN BATIMI
-${clean(answers.gun)}
-
-━━━━━━━━━━━━━━━━━━
-
-🏖️ TATİL
-${clean(answers.tatil)}
-
-🍽️ AKŞAM PLANI
-${clean(answers.aksam)}
-
-🎁 BENİM İÇİN ANLAMLI OLAN
-${clean(answers.jest)}
-
-❤️ YAKINLAŞIRKEN BENİM İÇİN ÖNEMLİ OLAN
-${clean(answers.yakinlik)}
-
-━━━━━━━━━━━━━━━━━━
-
-😂 BENİ EN KOLAY GÜLDÜREN ŞEY
-${clean(answers.gulduren)}
-
-🧠 İNSANLARIN BENDE YANLIŞ ANLADIĞI ŞEY
-${clean(answers.yanlisAnlasilan)}
-
-🌸 BENİ DEĞERLİ HİSSETTİREN ŞEY
-${clean(answers.degerliHissettiren)}
-
-😊 BENİ EN KOLAY MUTLU EDEN ŞEY
-${clean(answers.mutlu)}
-
-❤️ BİR İNSANDA EN ÇOK DEĞER VERDİĞİM ŞEY
-${clean(answers.deger)}
-
-🚫 BENİ EN HIZLI SOĞUTAN ŞEY
-${clean(answers.sogutan)}
-
-☕ BİRLİKTE YAPMAK İSTEDİĞİM KÜÇÜK ŞEY
-${clean(answers.birlikte)}
-
-🌷 İDEAL BOŞ GÜNÜM
-${clean(answers.bosGun)}
-
-💭 EKLEMEK İSTEDİĞİM BAŞKA BİR ŞEY
-${clean(answers.ekstra)}
-
-✨ SANA DOĞRUDAN SORMADIĞIN AMA BİLMENİ İSTEDİĞİM ŞEY
-${clean(answers.ozel)}
-
-━━━━━━━━━━━━━━━━━━
-
-🌷 Dosya tamamlandı.
-
-Gerisini sohbetlerden öğrenirsin :)`;
+      box.classList.add("show");
+    }
 
 
-    const url =
+    function bpRandomEscape(){
+
+      const destinations = [
+
+        [
+          "Sessiz Bir Koy",
+          "Deniz kenarında sakin bir gün. Çay, sohbet ve biraz deniz havası."
+        ],
+
+        [
+          "Doğanın İçinde",
+          "Kalabalıktan uzaklaşıp doğanın içinde sakin bir gün."
+        ],
+
+        [
+          "Gün Batımı",
+          "Akşamı güzel bir yerde oturup gün batımını izleyerek kapatalım."
+        ],
+
+        [
+          "Uzak Bir Yer",
+          "Arabaya binelim ve nereye gittiğimizi fazla düşünmeden biraz uzaklaşalım."
+        ],
+
+        [
+          "Sessiz Bir Nokta",
+          "Kimsenin olmadığı sakin bir yerde oturalım ve sadece günü yaşayalım."
+        ]
+
+      ];
+
+      const random =
+        destinations[
+          Math.floor(Math.random()*destinations.length)
+        ];
+
+      bpDestination(
+        random[0],
+        random[1]
+      );
+    }
+
+
+    /* =====================================================
+       GİZLİ BÖLÜM
+    ===================================================== */
+
+    let BP_SECRET_STEP = 0;
+
+    function bpOpenSecret(){
+
+      const content =
+        document.getElementById("bpSecretContent");
+
+      BP_SECRET_STEP++;
+
+      if(BP_SECRET_STEP === 1){
+
+        content.innerHTML = `
+          <div class="big-heart">👀</div>
+
+          <h4>Gerçekten buraya mı bastın?</h4>
+
+          <p>
+            Burası normalde sadece bizim bildiğimiz yerdi.
+            <br><br>
+            Bir kez daha basarsan devam edeceğiz.
+          </p>
+
+          <button
+            class="bp-secret-btn"
+            onclick="bpOpenSecret()">
+            Devam et →
+          </button>
+        `;
+
+      }
+
+      else if(BP_SECRET_STEP === 2){
+
+        content.innerHTML = `
+          <div class="big-heart">🔐</div>
+
+          <h4>Tamam. Son bir şey.</h4>
+
+          <p>
+            Buradaki şifre aslında bir kelime değil.
+            <br><br>
+            <strong>GÜVEN</strong>
+            <br><br>
+            Çünkü bazı planların gerçekleşmesi için
+            önce bunun olması gerekiyor.
+          </p>
+
+          <button
+            class="bp-secret-btn"
+            onclick="bpOpenSecret()">
+            Şimdi asıl sürprizi aç ♡
+          </button>
+        `;
+
+      }
+
+      else{
+
+        content.innerHTML = `
+          <div class="big-heart">♡</div>
+
+          <h4>Sadece bizim bildiğimiz şey:</h4>
+
+          <p>
+            Bazen güzel bir plan;
+            <br><br>
+            çay içmek,
+            uzun uzun konuşmak,
+            sessiz bir yere gitmek
+            veya hiçbir şey yapmadan yan yana oturmaktır.
+            <br><br>
+            Ve bence en güzel kısmı,
+            bunu kiminle yaptığımızdır.
+            <br><br>
+            <strong>Gerisini birlikte planlarız. ♡</strong>
+          </p>
+
+          <button
+            class="bp-secret-btn"
+            onclick="bpSecretWhatsApp()">
+            💚 Bu kısmı ona gönder
+          </button>
+        `;
+
+      }
+
+      content.classList.add("show");
+    }
+
+
+    /* =====================================================
+       WHATSAPP
+    ===================================================== */
+
+    function bpSecretWhatsApp(){
+
+      const message =
+`Sana küçük bir şey bırakmıştım... ♡
+
+Çay, uzun sohbet, sessiz bir yer ve biraz uzaklaşmak...
+
+Belki de bütün plan bundan ibaret.
+
+Gerisini birlikte planlarız. ❤️`;
+
+      const url =
         "https://wa.me/" +
-        WHATSAPP_NUMBER +
+        BP_WHATSAPP +
         "?text=" +
         encodeURIComponent(message);
 
+      window.open(url,"_blank");
+    }
 
-    window.open(
-        url,
-        "_blank"
+
+    /* =====================================================
+       AKTİVİTE MODAL
+    ===================================================== */
+
+    function bpOpenActivity(
+      key,
+      customTitle=null,
+      customText=null
+    ){
+
+      const activity =
+        BP_ACTIVITIES[key];
+
+      if(!activity) return;
+
+      BP_SELECTED_ACTIVITY = activity;
+
+      document.getElementById("bpModalIcon").textContent =
+        activity.icon;
+
+      document.getElementById("bpModalTitle").textContent =
+        customTitle || activity.title;
+
+      document.getElementById("bpModalText").textContent =
+        customText || activity.text;
+
+      document
+        .getElementById("bpActivityModal")
+        .classList.add("show");
+
+      document.documentElement.style.overflow="hidden";
+    }
+
+
+    function bpCloseActivity(){
+
+      document
+        .getElementById("bpActivityModal")
+        .classList.remove("show");
+
+      document.documentElement.style.overflow="";
+    }
+
+
+    function bpSendActivity(){
+
+      if(!BP_SELECTED_ACTIVITY) return;
+
+      const message =
+`Canım sıkıldı ve bugün ${BP_SELECTED_ACTIVITY.title} seçtim ${BP_SELECTED_ACTIVITY.icon}
+
+Hazırsan beraber yapalım mı? ❤️`;
+
+      const url =
+        "https://wa.me/" +
+        BP_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(url,"_blank");
+
+      bpCloseActivity();
+
+      bpToast("Plan WhatsApp'a hazırlandı 💚");
+    }
+
+
+    /* =====================================================
+       RASTGELE PLAN
+    ===================================================== */
+
+    function bpRandomPlan(){
+
+      const keys =
+        Object.keys(BP_ACTIVITIES);
+
+      const key =
+        keys[Math.floor(Math.random()*keys.length)];
+
+      bpOpenActivity(key);
+    }
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    function bpToast(message){
+
+      const toast =
+        document.getElementById("bpToast");
+
+      toast.textContent=message;
+
+      toast.classList.add("show");
+
+      setTimeout(()=>{
+        toast.classList.remove("show");
+      },2500);
+    }
+
+
+    /* =====================================================
+       MODAL DIŞINA TIKLAMA
+    ===================================================== */
+
+    document
+      .getElementById("bpActivityModal")
+      .addEventListener("click",function(e){
+
+        if(e.target === this){
+          bpCloseActivity();
+        }
+
+      });
+
+  </script>
+
+</div>
+
+<script>
+
+const BP_SITE_PASSWORD = "oyku2026";
+
+
+function bpEnterSite(){
+
+  const input =
+    document.getElementById("bpSitePassword");
+
+  const error =
+    document.getElementById("bpSiteError");
+
+  const password =
+    input.value.trim();
+
+
+  if(password === BP_SITE_PASSWORD){
+
+    error.style.display = "none";
+
+    document.getElementById(
+      "bpSiteLogin"
+    ).style.display = "none";
+
+    sessionStorage.setItem(
+      "bp_site_unlocked",
+      "true"
     );
+
+  }else{
+
+    error.style.display = "block";
+
+    input.value = "";
+
+    input.focus();
+
+  }
+
+}
+
+
+/* ENTER İLE GİRİŞ */
+
+document
+  .getElementById("bpSitePassword")
+  .addEventListener("keydown", function(e){
+
+    if(e.key === "Enter"){
+      bpEnterSite();
+    }
+
+  });
+
+
+/* SAYFAYA DAHA ÖNCE GİRİLDİYSE */
+
+if(
+  sessionStorage.getItem(
+    "bp_site_unlocked"
+  ) === "true"
+){
+
+  document.getElementById(
+    "bpSiteLogin"
+  ).style.display = "none";
 
 }
 
 </script>
-
-</body>
-</html>
-
